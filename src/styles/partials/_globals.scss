@@ -1,0 +1,345 @@
+@use "colors";
+@use "variables";
+@use "typography";
+@use "mixins";
+
+html, body, figure, blockquote {
+
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    position: relative;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+::placeholder { 
+    color: colors.$primary-black;
+    opacity: 1;
+}
+
+.nav {
+    background-color: colors.$primary-black;
+    
+    &__container {
+        @include mixins.container('no-padding');
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include mixins.tablet {
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+    }
+
+    &__logo-container {
+        text-align: center;
+        @include mixins.tablet {
+            text-align: left;
+            margin-right: 1.5rem;
+            padding: 0.75rem 0;
+        }
+        @include mixins.desktop {
+            padding: 1.65rem 0;
+        }
+    }
+    
+    &__list-container {
+        width: 100%;
+        @include mixins.tablet {
+            width: auto;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__list-item {
+        width: 50%;
+        text-align: center;
+        text-transform: capitalize;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid colors.$primary-black;
+        transition: all 0.75s ease;
+        @include mixins.tablet {
+            width: 100%;
+            padding: 1.25rem 0;
+            margin: 0 1.5rem;
+        }
+        @include mixins.desktop {
+            padding: 2.25rem 0;
+        }
+
+        &--active {
+            border-bottom: 3px solid colors.$primary-white;
+            font-weight: 600;
+        }
+    }
+
+    &__list-item:hover {
+        border-bottom: 3px solid colors.$primary-silver;
+    }
+
+    &__list-link {
+        display: inline-block;
+        color: colors.$primary-silver;
+        text-decoration: none;
+
+        &--active {
+            color: colors.$secondary-alabaster;
+        }
+    }
+
+    &__logo {
+        background-color: colors.$primary-black;
+        height: 1.25rem;
+        padding: 1rem 0 0.5rem 0;
+    }
+
+}
+
+.footer {
+    background-color: colors.$primary-black;
+    color: colors.$primary-white;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    @include mixins.tablet {
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    &__container {
+        @include mixins.container;
+    }
+}
+
+.social-media {
+    @include mixins.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    &__link-container {
+        @include mixins.row;
+        @include mixins.tablet {
+            margin-left: 1.5rem;
+        }    
+    }
+
+    &__heading {
+        padding-top: 1.5rem;
+        @include mixins.row;
+    }
+
+    &__info-left {
+        @include mixins.tablet {
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+        }
+    }
+
+    &__info-right {
+        display: none;
+        @include mixins.tablet {
+            display: block;
+        }
+    }
+
+    &__link {
+        margin-right: 2rem;
+        text-decoration: none;
+    }
+}
+
+.contact {
+    @include mixins.tablet {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    &__column {
+        @include mixins.tablet {
+            margin-right: 2.5rem;
+        }
+    }
+
+    &__row {
+        @include mixins.row;
+        @include mixins.tablet {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+    }
+
+    &__row-item {
+        &--bold {
+            font-weight: 600;    
+        }
+    }
+
+    &__email {
+        color: colors.$primary-white;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 1rem;
+        transition: 0.75s ease;
+    }
+
+    &__email:hover {
+        color: colors.$primary-silver;
+    }
+}
+
+.copyright {
+    &__row {
+        @include mixins.row;
+    }
+
+    &__logo {
+        margin-top: 2rem;
+        @include mixins.tablet {
+            display: none;
+        }
+    }
+    
+    &__details {
+        margin-bottom: 0.5rem;
+        font-size: 0.7rem;
+        color: colors.$secondary-mercury;
+        @include mixins.tablet {
+            font-size: 0.875rem;
+        }
+    }
+}
+
+.notification {
+    position:fixed;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    bottom: 1rem;
+    z-index: 2;
+    width: 50vw;
+    right: 1.5rem;
+    box-sizing: border-box;
+    color: white;
+    background-color: colors.$primary-black;
+    border: 1px solid colors.$primary-silver;
+    animation: fade 4.0s ease-in-out forwards;
+
+    @include mixins.tablet {
+        width: 30vw;
+    }
+
+    &__heading {
+        margin: 0rem;
+    }
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        width: 90vw;
+        border-radius: 0.25rem;
+        padding: 1rem 1rem 0 1rem;
+        box-sizing: border-box;
+        background-color: colors.$primary-white;
+
+        @include mixins.tablet {
+            width: 60vw;
+        }
+
+        @include mixins.desktop {
+            width: 30vw;
+            padding: 2rem 2rem 1rem 2rem;
+        }
+    }
+
+    &__heading-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+    }
+
+    &__heading {
+        margin: 0 0 0.5rem 0;
+    }
+
+    &__heading-image {
+        margin-right: 0.5rem;
+    }
+
+    &__submit-button, &__cancel-button {
+        color: colors.$primary-white;
+        border: none;
+        border-radius: 0.25rem;
+        font-size: 1rem;
+        height: 2.5rem;
+        font-weight: 400;
+        flex: 1;
+        text-transform: uppercase;
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &__button-container {
+        display: flex;
+        padding: 1rem 0;
+        justify-content: space-between;
+    }
+
+    &__submit-button {
+        background-color: colors.$primary-black;
+        margin-left: 0.25rem;
+        &:hover {
+            background-color: colors.$secondary-black;
+        }
+    }
+
+    &__cancel-button {
+        background-color: colors.$secondary-mercury;
+        color: colors.$primary-black;
+        margin-right: 0.25rem;
+        &:hover {
+            background-color: colors.$primary-silver;
+        }
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
