@@ -1,6 +1,9 @@
 import './Nav.scss';
 import logo from '../../assets/images/logo/BrainFlix-logo.svg';
+import buttonImg from '../../assets/images/icons/upload.svg';
+import searchImg from '../../assets/images/icons/search.svg';
 import avatar from '../../assets/images/images/Mohan-muruge.jpg';
+import Button from '../Button/Button';
 
 function Nav() {
     return (
@@ -10,14 +13,18 @@ function Nav() {
             </figure>
             <form className='nav__search-form'>
                 <label className='nav__search'>
+                    <img className='nav__search-image' src={searchImg} alt="search for a video" />
                     <input className='nav__search-input' type='text' name='nav-search' placeholder='Search'/>
                 </label>
                 <figure className='nav__avatar'>
                     <img className='nav__avatar-image' src={avatar} alt='avatar for user mohan' />
                 </figure>
-                <label className='nav__submit'>
-                    <input className='nav__submit-input' type='submit' value="UPLOAD" />
-                </label>
+                <Button 
+                    className="nav__submit"
+                    image={buttonImg}
+                    text="UPLOAD"
+                    type="submit"
+                    />
             </form>
         </nav>
     );
