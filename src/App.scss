@@ -1,0 +1,19 @@
+@use "./styles/partials/colors";
+@use "./styles/partials/variables";
+@use "./styles/partials/typography";
+@use "./styles/partials/mixins";
+@use "./styles/partials/globals";
+
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    @include mixins.tablet {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+    @include mixins.desktop {
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

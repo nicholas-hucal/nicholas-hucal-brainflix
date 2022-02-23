@@ -1,10 +1,11 @@
-import './App.css';
+import './App.scss';
+import Nav from './components/Nav/Nav';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <section className='container'>
+      <Nav />
+    </section>
   );
 }
 
