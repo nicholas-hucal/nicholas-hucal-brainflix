@@ -4,7 +4,7 @@ import VideoHero from './components/VideoHero/VideoHero';
 import React from 'react';
 import videos from './data/videos.json';
 import VideoDetails from './components/VideoDetails/VideoDetails';
-
+import Comments from './components/Comments/Comments';
 
 class App extends React.Component {
 
@@ -26,6 +26,7 @@ class App extends React.Component {
         <Nav />
         <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={this.state.videos[0].image} />
         <VideoDetails video={this.state.videos[0]} dateFunction={formatDateForSite} />
+        <Comments />
       </>
     );
   }

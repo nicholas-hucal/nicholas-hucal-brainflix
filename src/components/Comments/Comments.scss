@@ -1,0 +1,96 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/mixins";
+
+.comments {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+
+    @include mixins.tablet {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    @include mixins.desktop {
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__form-container {
+        display: flex;
+    }
+
+    &__heading {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+
+    &__avatar-container {
+        width: 2.5rem;
+        height: 2.5rem;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-top: 1rem;
+        
+        @include mixins.tablet {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+
+    &__avatar {
+        margin: 0 auto;
+        height: 100%;
+
+        &--no-image {
+            background-color: colors.$secondary-mercury;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-left: 1rem;
+    }
+
+    &__form-heading {
+        text-transform: uppercase;
+        color: colors.$primary-silver;
+        margin: 0;
+    }
+
+    &__textarea {
+        width: 100%;
+        box-sizing: border-box;
+        height: 6rem;
+        border-radius: 0.25rem;
+        border: 1px solid colors.$secondary-mercury;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        resize: none;
+    }
+
+    &__submit {
+
+    }
+
+}
+
+// <h3 className='comments__heading'>Comments</h3>
+// <div className='comments__form-container'>
+//     <figure className='comments__avatar'>
+//         <img src={avatar} alt="avatar for Mohan Muruge"/>
+//     </figure>
+//     <form className='comments__form'>
+//         <h3 className='comments__form-heading'>Join the conversation</h3>
+//         <textarea className='comments__textarea' name="comment" placeholder='Add a new comment'></textarea>
+//         <Button 
+//             className="comments__submit"
+//             image={buttonImg}
+//             text="COMMENT"
+//             type="submit"
+//             />
+//     </form>
+// </div>
