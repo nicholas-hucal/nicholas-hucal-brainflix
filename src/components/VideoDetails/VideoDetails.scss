@@ -6,13 +6,13 @@
     padding-right: 1rem;
     display: flex;
     flex-direction: column;
-    @include mixins.row;
 
     @include mixins.tablet {
         padding-left: 2.25rem;
         padding-right: 2.25rem;
         justify-content: center;
     }
+
     @include mixins.desktop {
         max-width: 64rem;
         margin-left: auto;
@@ -20,18 +20,43 @@
     }
 
     &__title {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+        margin-top: 1rem;
+        @include mixins.row;
+        @include mixins.tablet {
+            padding-bottom: 0;
+        }
     }
 
     &__info {
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
+        justify-content: flex-start;
         border-top: 1px solid colors.$secondary-mercury;
         border-bottom: 1px solid colors.$secondary-mercury;
-        padding: 0.5rem 0;
+        @include mixins.row;
         margin: 0.5rem 0;
+
+        @include mixins.tablet {
+            border-top: none;
+            justify-content: space-between;
+            padding-top: 0;
+        }
+    }
+
+    &__info-start {
+        flex-basis: 50%;
+
+        @include mixins.tablet {
+            flex-basis: 30%;
+            display: flex;
+        }
+    }
+
+    &__info-end {
+        flex-basis: 30%;
+
+        @include mixins.tablet {
+            display: flex;
+        }
     }
 
     &__channel {
@@ -41,7 +66,6 @@
 
     &__date {
         flex-basis: 50%;
-        order: 3;
         padding: 0.25rem 0;
         color: colors.$primary-silver;
     }
@@ -50,9 +74,12 @@
         flex-basis: 50%;
         display: flex;
         align-items: center;
-        order: 2;
         padding: 0.25rem 0;
         color: colors.$primary-silver;
+
+        @include mixins.tablet {
+            justify-content: flex-end;
+        }
     }
 
     &__likes {
@@ -60,8 +87,11 @@
         display: flex;
         align-items: center;
         padding: 0.25rem 0;
-        order: 4;
         color: colors.$primary-silver;
+
+        @include mixins.tablet {
+            justify-content: flex-end;
+        }
     }
 
     &__icon {
@@ -69,7 +99,6 @@
     }
 
     &__description {
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+        @include mixins.row;
     }
 }
