@@ -11,21 +11,25 @@ function Nav() {
             <figure className='nav__logo'>
                 <img className='nav__logo-image' src={logo} alt='brainflix logo' />
             </figure>
-            <form className='nav__search-form'>
-                <label className='nav__search'>
-                    <img className='nav__search-image' src={searchImg} alt="search for a video" />
-                    <input className='nav__search-input' type='text' name='nav-search' placeholder='Search'/>
-                </label>
+            <section className='nav__content'>
+                <form className='nav__search-form'>
+                    <label className='nav__search'>
+                        <img className='nav__search-image' src={searchImg} alt="search for a video" />
+                        <input className='nav__search-input' type='text' name='nav-search' placeholder='Search'/>
+                    </label>
+                </form>
                 <figure className='nav__avatar'>
                     <img className='nav__avatar-image' src={avatar} alt='avatar for user mohan' />
                 </figure>
-                <Button 
-                    className="nav__submit"
-                    image={buttonImg}
-                    text="UPLOAD"
-                    type="submit"
-                    />
-            </form>
+                <form className='nav__submit-form'>
+                    <Button 
+                        className="nav__submit"
+                        image={buttonImg}
+                        text="UPLOAD"
+                        type="submit"
+                        />
+                </form>
+            </section>
         </nav>
     );
 }
