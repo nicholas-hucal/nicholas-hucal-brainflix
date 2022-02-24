@@ -1,0 +1,75 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/mixins";
+
+.video-details {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    @include mixins.row;
+
+    @include mixins.tablet {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+        justify-content: center;
+    }
+    @include mixins.desktop {
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__title {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    &__info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        border-top: 1px solid colors.$secondary-mercury;
+        border-bottom: 1px solid colors.$secondary-mercury;
+        padding: 0.5rem 0;
+        margin: 0.5rem 0;
+    }
+
+    &__channel {
+        flex-basis: 50%;
+        padding: 0.25rem 0;
+    }
+
+    &__date {
+        flex-basis: 50%;
+        order: 3;
+        padding: 0.25rem 0;
+        color: colors.$primary-silver;
+    }
+
+    &__views {
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        order: 2;
+        padding: 0.25rem 0;
+        color: colors.$primary-silver;
+    }
+
+    &__likes {
+        flex-basis: 50%;
+        display: flex;
+        align-items: center;
+        padding: 0.25rem 0;
+        order: 4;
+        color: colors.$primary-silver;
+    }
+
+    &__icon {
+        margin-right: 0.5em;
+    }
+
+    &__description {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}

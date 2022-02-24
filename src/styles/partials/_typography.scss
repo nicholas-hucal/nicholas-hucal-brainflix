@@ -18,17 +18,16 @@
 body {
     font-size: 16px;
     font-family: 'avenir';
+    font-weight: 400;
     color: colors.$primary-black;
 }
 
 h1 {
     margin: 0;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.5rem;
     line-height: 2rem;
     @include mixins.tablet {
-        padding-top: 3rem;
-        padding-bottom: 2.25rem;
         font-size: 3.75rem;
         line-height: 4.25rem;
     }
@@ -36,27 +35,19 @@ h1 {
 
 h2 {
     margin: 0;
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    @include mixins.tablet { 
-        padding-top: 3rem;
-        padding-bottom: 2.25rem;
-        font-size: 2.25rem;
-        line-height: 2.75rem;
-    }
+    font-weight: 700;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
 }
 
 h3 {
     margin: 0;
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 1.375rem;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
     @include mixins.tablet {
-        padding-top: 3rem;
-        padding-bottom: 2.25rem;
-        font-size: 1.5rem;
-        line-height: 2rem;
+        font-size: 0.875rem;
+        line-height: 1.375rem;
     }
 }
 
@@ -71,27 +62,12 @@ p {
     }
 }
 
-footer p, footer a {
-    margin: 0;
-    font-weight: 400;
-    font-size: 0.8125rem;
-    line-height: 1.125rem;
-    @include mixins.tablet {
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-    }
-}
-
 label, button {
     margin: 0;
     font-family: 'avenir';
     font-weight: 700;
-    font-size: 0.625rem;
+    font-size: 0.75rem;
     line-height: 1.25rem;
-    @include mixins.tablet {
-        font-size: 0.75rem;
-        line-height: 1.25rem;
-    }
 }
 
 cite, address {
@@ -99,7 +75,7 @@ cite, address {
 }
 
 figcaption, blockquote, cite {
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.875rem;
     line-height: 1.375rem;
     @include mixins.tablet {
