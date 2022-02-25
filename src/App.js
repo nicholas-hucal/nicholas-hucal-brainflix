@@ -9,10 +9,12 @@ import Comments from './components/Comments/Comments';
 class App extends React.Component {
 
   state = {
-    videos: videos
+    videos: videos,
+    currentVideo: videos[0]
   }
 
   render() {
+    const { videos, currentVideo } = this.state;
 
     const formatDateForSite = (timestamp) => {
       if (timestamp) {
@@ -24,8 +26,8 @@ class App extends React.Component {
     return (
       <>
         <Nav />
-        <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={this.state.videos[0].image} />
-        <VideoDetails video={this.state.videos[0]} dateFunction={formatDateForSite} />
+        <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
+        <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
         <Comments />
       </>
     );

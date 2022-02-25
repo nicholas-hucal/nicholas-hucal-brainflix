@@ -1,0 +1,50 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/mixins";
+
+.comment {
+    display: flex;
+    justify-content: space-between;
+
+    &__avatar-container {
+        width: 2.5rem;
+        height: 2.5rem;
+        overflow: hidden;
+        border-radius: 50%;
+                
+        @include mixins.tablet {
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+
+    &__avatar {
+        margin: 0 auto;
+        height: 100%;
+
+        &--no-image {
+            background-color: colors.$secondary-mercury;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-left: 1rem;
+    }
+
+    &__details {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__name {
+        flex: 1;
+        font-weight: 700;
+    }
+
+    &__date {
+        flex: 1;
+        color: colors.$primary-silver;
+    }
+}
