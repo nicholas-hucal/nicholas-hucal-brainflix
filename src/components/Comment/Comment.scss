@@ -4,6 +4,8 @@
 .comment {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid colors.$secondary-mercury;
+    padding: 1rem 0;
 
     &__avatar-container {
         width: 2.5rem;
@@ -46,5 +48,6 @@
     &__date {
         flex: 1;
         color: colors.$primary-silver;
+        text-align: right;
     }
 }

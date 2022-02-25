@@ -19,6 +19,8 @@
 
     &__form-container {
         display: flex;
+        border-bottom: 1px solid colors.$secondary-mercury;
+        padding-bottom: 1rem;
     }
 
     &__heading {

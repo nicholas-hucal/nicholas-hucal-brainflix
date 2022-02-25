@@ -2,15 +2,15 @@ import './App.scss';
 import Nav from './components/Nav/Nav';
 import VideoHero from './components/VideoHero/VideoHero';
 import React from 'react';
-import videos from './data/videos.json';
+import videosJson from './data/videos.json';
+import videosDetailsJson from './data/video-details.json';
 import VideoDetails from './components/VideoDetails/VideoDetails';
-import Comments from './components/Comments/Comments';
 
 class App extends React.Component {
 
   state = {
-    videos: videos,
-    currentVideo: videos[0]
+    videos: videosJson,
+    currentVideo: videosDetailsJson[0]
   }
 
   render() {
@@ -28,7 +28,6 @@ class App extends React.Component {
         <Nav />
         <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
         <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
-        <Comments />
       </>
     );
   }

@@ -1,16 +1,12 @@
 import './VideoDetails.scss';
-import React from 'react';
 import viewIcon from '../../assets/images/icons/views.svg';
 import likeIcon from '../../assets/images/icons/likes.svg';
-import videoDetailsJson from '../../data/video-details.json';
+import Comments from '../../components/Comments/Comments';
 
-
-class VideoDetails extends React.Component {
-    render() {
-        const { dateFunction, video : currentVideo } = this.props;
-        const { title, channel, timestamp, views, likes, description } = videoDetailsJson.find(video => video.id === currentVideo.id);
-
-        return (
+function VideoDetails({ video, dateFunction }) {
+    const { title, channel, timestamp, views, likes, description, comments } = video;
+    return (
+        <>
             <section className='video-details'>
                 <h1 className='video-details__title'>{title}</h1>
                 <div className='video-details__info'>
@@ -41,8 +37,9 @@ class VideoDetails extends React.Component {
                     {description};
                 </p>
             </section>
-        );
-    }
+            <Comments comments={comments} dateFunction={dateFunction}/>
+        </>
+    );
 }
 
 export default VideoDetails;

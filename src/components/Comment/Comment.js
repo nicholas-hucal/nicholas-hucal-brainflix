@@ -1,6 +1,7 @@
 import './Comment.scss';
 
-function Comment(props) {
+function Comment({individualComment, dateFunction}) {
+    const { name, timestamp, comment, likes} = individualComment;
     return (
         <article className='comment'>
             <figure className='comment__avatar-container'>
@@ -9,14 +10,14 @@ function Comment(props) {
             <section className='comment__info'>
                 <div className='comment__details'>
                     <p className='comment__name'>
-                        Nick
+                        {name}
                     </p>
                     <p className='comment__date'>
-                        02/02/2022
+                        {dateFunction(timestamp)}
                     </p>
                 </div>
                 <p className='comment__comment'>
-                    Here goes the comment details and content
+                    {comment}
                 </p>
             </section>
         </article>

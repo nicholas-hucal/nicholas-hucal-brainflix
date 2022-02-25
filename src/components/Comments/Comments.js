@@ -2,11 +2,12 @@ import './Comments.scss';
 import buttonImg from '../../assets/images/icons/add_comment.svg';
 import avatar from '../../assets/images/images/Mohan-muruge.jpg';
 import Button from '../Button/Button';
+import Comment from '../Comment/Comment';
 
-function Comments(props) {
+function Comments({comments, dateFunction}) {
     return (
         <section className='comments'>
-            <h3 className='comments__heading'>Comments</h3>
+            <h3 className='comments__heading'>{comments.length} Comments</h3>
             <div className='comments__form-container'>
                 <figure className='comments__avatar-container'>
                     <img className='comments__avatar' src={avatar} alt="avatar for Mohan Muruge"/>
@@ -23,7 +24,7 @@ function Comments(props) {
                 </form>
             </div>
             <section>
-                {console.log(props)}
+               {comments.map(comment => <Comment individualComment={comment} dateFunction={dateFunction} key={comment.timestamp}/>)}
             </section>
         </section>
     )
