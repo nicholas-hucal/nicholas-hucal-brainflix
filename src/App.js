@@ -31,6 +31,8 @@ class App extends React.Component {
         <div className='container'>
           <main>
             <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
+            {/* <CommentForm />
+            <Comments /> */}
           </main>
           <aside>
             <VideoList videos={videos}/>
