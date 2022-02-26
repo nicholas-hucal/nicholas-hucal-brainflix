@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "BrainFlix",
+  "name": "A responsive app prototype",
   "icons": [
     {
       "src": "favicon.ico",
