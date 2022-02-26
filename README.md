@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In Sprint 1 we start by creating the layout of the site. Then we add functionality to hold the list of available videos in state for display and manipulation via site components. Currently local data is used for display purposes and no upload or comment submission capability is included. Dates are formatted through a utils file to provide both human readable and if not dd/mm/yyyy format for easy viewing.
 
 ### Layout
-- Nav Component;
+- Nav Component
     - Logo(with anchor link to homepage)
     - A search form (not functional yet)
     - An upload button (not functional yet)
