@@ -2,5 +2,86 @@
 @use "../../styles/partials/mixins";
 
 .comment-form {
-    
+    &__form-container {
+        display: flex;
+        border-bottom: 1px solid colors.$secondary-mercury;
+        padding-bottom: 1rem;
+        @include mixins.desktop {
+            padding-right: 1rem;
+            padding-bottom: 0;
+        }
+    }
+
+    &__heading {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        @include mixins.desktop {
+            padding-right: 1rem;
+        }
+    }
+
+    &__avatar-container {
+        width: 2.5rem;
+        height: 2.5rem;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-top: 1rem;
+    }
+
+    &__avatar {
+        margin: 0 auto;
+        height: 100%;
+
+        &--no-image {
+            background-color: colors.$secondary-mercury;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-left: 1rem;
+
+        @include mixins.desktop {
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+    }
+
+    &__form-heading {
+        text-transform: uppercase;
+        color: colors.$primary-silver;
+        margin: 0;
+        
+        @include mixins.desktop {
+            flex-basis: 100%;
+        }
+    }
+
+    &__textarea {
+        width: 100%;
+        box-sizing: border-box;
+        height: 6rem;
+        border-radius: 0.25rem;
+        border: 1px solid colors.$secondary-mercury;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        resize: none;
+
+        @include mixins.desktop {
+            height: 2.5rem;
+            flex: 2;
+            margin-right: 1rem;
+            overflow: hidden;
+            padding: 0.6rem;
+        }
+    }
+
+    &__submit {
+        @include mixins.desktop {
+            flex: 1;
+        }
+    }
 }
