@@ -2,7 +2,6 @@
 @use "../../styles/partials/mixins";
 
 .video {
-    // max-width: 40vw;
     display: flex;
     padding: 0.5rem 0;
     
@@ -28,6 +27,9 @@
         justify-content: space-between;
         @include mixins.tablet {
             max-width: 12rem;
+        }
+        @include mixins.desktop {
+            width: 12rem;
         }
     }
 

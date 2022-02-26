@@ -28,14 +28,14 @@ class App extends React.Component {
       <>
         <Nav />
         <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
-        <main className='main'>
-          <section className='videoDetails'>
+        <div className='container'>
+          <main>
             <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
-          </section>
-          <aside className='videosAside'>
+          </main>
+          <aside>
             <VideoList videos={videos}/>
           </aside>
-        </main>
+        </div>
       </>
     );
   }
