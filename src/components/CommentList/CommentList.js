@@ -1,7 +1,7 @@
-import './CommentsList.scss';
+import './CommentList.scss';
 import Comment from '../Comment/Comment';
 
-function CommentsList({ comments, dateFunction }) {
+function CommentList({ comments, dateFunction }) {
     return (
         <section className='comments-list'>
             {comments.map((comment, index, array) => {
@@ -11,4 +11,4 @@ function CommentsList({ comments, dateFunction }) {
         </section>
     )
 }
-export default CommentsList;
+export default CommentList;

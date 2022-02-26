@@ -1,10 +1,9 @@
 import './Video.scss'
 
-function Video({ video }) {
+function Video({ video, clickHandler }) {
     const { id, title, channel, image } = video;
-
     return (
-        <article className='video'>
+        <article className='video' onClick={() => clickHandler(id)}>
             <div className='video__image-container'>
                 <img className='video__image' src={image} alt={title} />
             </div>

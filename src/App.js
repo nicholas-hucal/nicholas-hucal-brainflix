@@ -2,23 +2,30 @@ import './App.scss';
 import Nav from './components/Nav/Nav';
 import VideoHero from './components/VideoHero/VideoHero';
 import React from 'react';
-import videosJson from './data/videos.json';
-import videosDetailsJson from './data/video-details.json';
+import videosData from './data/videos.json';
+import videosDetailsData from './data/video-details.json';
 import VideoDetails from './components/VideoDetails/VideoDetails';
 import VideoList from './components/VideoList/VideoList';
 import CommentForm from './components/CommentForm/CommentForm';
-import CommentsList from './components/CommentsList/CommentsList';
+import CommentList from './components/CommentList/CommentList';
 import Utils from './utils/Utils.js';
 
 class App extends React.Component {
 
   state = {
-    videos: videosJson,
-    currentVideo: videosDetailsJson[0]
+    videos: videosData,
+    videosExtended: videosDetailsData,
+    currentVideo: videosDetailsData[0]
+  }
+
+  updateCurrentVideo = (videoId) => {
+    const newCurrentVideo = this.state.videosExtended.find((video) => video.id === videoId)
+    this.setState({ currentVideo: newCurrentVideo})
   }
 
   render() {
     const { videos, currentVideo } = this.state;
+    const filteredVideos = videos.filter(video => video.id !== currentVideo.id)
 
     return (
       <>
@@ -28,10 +35,10 @@ class App extends React.Component {
           <main>
             <VideoDetails video={currentVideo} dateFunction={Utils} />
             <CommentForm commentsCount={currentVideo.comments.length}/>
-            <CommentsList comments={currentVideo.comments} dateFunction={Utils}/>
+            <CommentList comments={currentVideo.comments} dateFunction={Utils}/>
           </main>
           <aside>
-            <VideoList videos={videos}/>
+            <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo}/>
           </aside>
         </div>
       </>
