@@ -6,6 +6,8 @@ import videosJson from './data/videos.json';
 import videosDetailsJson from './data/video-details.json';
 import VideoDetails from './components/VideoDetails/VideoDetails';
 import VideoList from './components/VideoList/VideoList';
+import CommentForm from './components/CommentForm/CommentForm';
+import CommentsList from './components/CommentsList/CommentsList';
 
 class App extends React.Component {
 
@@ -31,8 +33,8 @@ class App extends React.Component {
         <div className='container'>
           <main>
             <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
-            {/* <CommentForm />
-            <Comments /> */}
+            <CommentForm commentsCount={currentVideo.comments.length}/>
+            <CommentsList comments={currentVideo.comments} dateFunction={formatDateForSite}/>
           </main>
           <aside>
             <VideoList videos={videos}/>

@@ -1,10 +1,10 @@
 import './Button.scss';
 
-function Button(props) {
+function Button({ className, alt, text, type, image }) {
     return (
-        <label className={'button ' + props.className}>
-            <img className='button__image' src={props.image} alt={props.alt} />
-            <input className='button__input' type={props.type} value={props.text} />
+        <label className={'button ' + className}>
+            <img className='button__image' src={image} alt={alt} />
+            <input className='button__input' type={type} value={text} />
         </label>
     )
 }

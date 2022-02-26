@@ -1,11 +1,11 @@
 import './VideoHero.scss';
 
-function VideoHero(props) {
+function VideoHero({posterSrc, videoSrc, videoType}) {
     return (
         <div className='video-hero'>
             <section className='video-hero__container'>
-                <video className='video-hero__video' controls poster={props.posterSrc}>
-                    <source src={props.videoSrc} type={props.videoType} />
+                <video className='video-hero__video' controls poster={posterSrc}>
+                    <source src={videoSrc} type={videoType} />
                 </video>
             </section>
         </div>

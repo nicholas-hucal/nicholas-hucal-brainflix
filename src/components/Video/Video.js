@@ -1,12 +1,7 @@
-import React from 'react'
 import './Video.scss'
 
 function Video({ video }) {
     const { id, title, channel, image } = video;
-
-    function truncateText(text, length) {
-        return text.length <= length ? text : text.substr(0, length) + '\u2026';
-    }
 
     return (
         <article className='video'>
