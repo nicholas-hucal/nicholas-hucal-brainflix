@@ -8,6 +8,7 @@ import VideoDetails from './components/VideoDetails/VideoDetails';
 import VideoList from './components/VideoList/VideoList';
 import CommentForm from './components/CommentForm/CommentForm';
 import CommentsList from './components/CommentsList/CommentsList';
+import Utils from './utils/Utils.js';
 
 class App extends React.Component {
 
@@ -19,22 +20,15 @@ class App extends React.Component {
   render() {
     const { videos, currentVideo } = this.state;
 
-    const formatDateForSite = (timestamp) => {
-      if (timestamp) {
-        return new Date(Number(timestamp)).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-      }
-      return new Date().toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    }
-
     return (
       <>
         <Nav />
         <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
         <div className='container'>
           <main>
-            <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
+            <VideoDetails video={currentVideo} dateFunction={Utils} />
             <CommentForm commentsCount={currentVideo.comments.length}/>
-            <CommentsList comments={currentVideo.comments} dateFunction={formatDateForSite}/>
+            <CommentsList comments={currentVideo.comments} dateFunction={Utils}/>
           </main>
           <aside>
             <VideoList videos={videos}/>
