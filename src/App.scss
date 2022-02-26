@@ -14,6 +14,7 @@
         padding-left: 2.25rem;
         padding-right: 2.25rem;
     }
+    
     @include mixins.desktop {
         flex-direction: row;
         max-width: 64rem;

@@ -17,16 +17,16 @@ function VideoDetails({ video, dateFunction }) {
                         <img
                             className='video-details__icon'
                             src={viewIcon}
-                            alt={`this videos views total is ${views}`} 
-                            />
+                            alt={`this videos views total is ${views}`}
+                        />
                         {views}
                     </p>
                     <p className='video-details__likes'>
                         <img
                             className='video-details__icon'
                             src={likeIcon}
-                            alt={`this videos likes total is ${likes}`} 
-                            />
+                            alt={`this videos likes total is ${likes}`}
+                        />
                         {likes}
                     </p>
                 </div>

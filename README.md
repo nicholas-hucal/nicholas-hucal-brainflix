@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# BrainFlix - A Responsive App Prototype 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Sass CSS pre-processor module installed
 
-## Available Scripts
+## Sprint 1
 
-In the project directory, you can run:
+In Sprint 1 we start by creating the layout of the site. Then we add functionality to hold the list of available videos in state for display and manipulation via site components. Currently local data is used for display purposes and no upload or comment submission capability is included. Dates are formatted through a utils file to provide both human readable and if not dd/mm/yyyy format for easy viewing.
 
-### `npm start`
+### Layout
+    - Nav Component;
+        - Logo(with anchor link to homepage)
+        - A search form (not functional yet)
+        - An upload button (not functional yet)
+            - A Button Component
+        - And a user avatar
+    - VideoHero Component
+        - holding the current video in a video player that spans the width of the container
+        - a default picture/poster is displayed in lieu of video
+        - black background behind to cover an area not in the 16/9 ratio video area
+    - VideoDetails Component
+        - Holds the details of the currently selected video
+        - Title, Channel, Date, Likes and Views Counts
+        - A description of the video follows
+    - CommentForm Component
+        - Holds the current count of comments
+        - The current user avatar
+        - and the form to submit new comments (not functional yet)
+            - Uses a Button Component
+    - CommentList Component
+        - Holds the list of current comments for the current video
+            - Uses the Comment Component to display comment
+    - VideoList Component
+        - Holds the list of other videos available for viewing. On click updates the UI without page refresh to display selected video and details
+            - Uses the Video Component to display a video
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Functionality
+    - State
+        - Videos holds a list of current videos with few details
+        - CurrentVideo holds the complete details of the currently selected video
+        - VideosExtended holds the complete details of all available videos
+    - Utils
+        - formatDateforSite provides a dd/mm/yyyy formated string date for the site
+        - createHumanReadableDate provides a human readable date in '1 day ago', '2 months ago' etc.
+    - The buttons on site are current set to ```e.preventDefault()``` so as not to provide any current function
+    - Nav logo anchors to root
+    - Clicking a video in the videolist updates the UI with that videos details and updates the videolist with available options, while excluding the selected video from the list.
+    - Responsive, the site has 2 breakpoints past mobile to allow for seamless viewing on any device.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

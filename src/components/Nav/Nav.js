@@ -9,24 +9,26 @@ function Nav() {
     return (
         <nav className='nav'>
             <figure className='nav__logo'>
-                <img className='nav__logo-image' src={logo} alt='brainflix logo' />
+                <a className='nav__link' href='/'>
+                    <img className='nav__logo-image' src={logo} alt='brainflix logo' />
+                </a>
             </figure>
             <section className='nav__content'>
                 <form className='nav__search-form'>
                     <label className='nav__search'>
                         <img className='nav__search-image' src={searchImg} alt="search for a video" />
-                        <input className='nav__search-input' type='text' name='nav-search' placeholder='Search'/>
+                        <input className='nav__search-input' type='text' name='nav-search' placeholder='Search' />
                     </label>
                 </form>
                 <figure className='nav__avatar'>
                     <img className='nav__avatar-image' src={avatar} alt='avatar for user mohan' />
                 </figure>
-                <Button 
+                <Button
                     className="nav__button"
                     image={buttonImg}
                     text="upload"
                     type="button"
-                    />
+                />
             </section>
         </nav>
     );

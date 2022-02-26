@@ -6,6 +6,7 @@
         display: flex;
         border-bottom: 1px solid colors.$secondary-mercury;
         padding-bottom: 1rem;
+        
         @include mixins.desktop {
             padding-right: 1rem;
             padding-bottom: 0;
@@ -15,6 +16,7 @@
     &__heading {
         margin-bottom: 1rem;
         margin-top: 1rem;
+        
         @include mixins.desktop {
             padding-right: 1rem;
         }

@@ -16,16 +16,16 @@ export const createHumanReadableDate = (timestamp) => {
             seconds: seconds[index],
             next: seconds[index + 1],
             plural: `${type} ago`,
-            singular: `${type.slice(0, -1)} ago` 
+            singular: `${type.slice(0, -1)} ago`
         }
         return time;
     })
     let howLongAgo = times.find((time) => time.seconds < timeDifference && time.next > timeDifference);
     if (howLongAgo) {
         if (howLongAgo.seconds * 2 > timeDifference) {
-            return `${Math.floor(timeDifference/howLongAgo.seconds)} ${howLongAgo.singular}`;
+            return `${Math.floor(timeDifference / howLongAgo.seconds)} ${howLongAgo.singular}`;
         } else {
-            return `${Math.floor(timeDifference/howLongAgo.seconds)} ${howLongAgo.plural}`;
+            return `${Math.floor(timeDifference / howLongAgo.seconds)} ${howLongAgo.plural}`;
         }
     }
     return this.formatDateforSite(timestamp);

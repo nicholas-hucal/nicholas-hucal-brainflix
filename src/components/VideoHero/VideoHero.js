@@ -1,6 +1,6 @@
 import './VideoHero.scss';
 
-function VideoHero({posterSrc, videoSrc, videoType}) {
+function VideoHero({ posterSrc, videoSrc, videoType }) {
     return (
         <div className='video-hero'>
             <section className='video-hero__container'>

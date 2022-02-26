@@ -20,7 +20,7 @@ class App extends React.Component {
 
   updateCurrentVideo = (videoId) => {
     const newCurrentVideo = this.state.videosExtended.find((video) => video.id === videoId)
-    this.setState({ currentVideo: newCurrentVideo})
+    this.setState({ currentVideo: newCurrentVideo })
   }
 
   render() {
@@ -34,11 +34,11 @@ class App extends React.Component {
         <div className='container'>
           <main>
             <VideoDetails video={currentVideo} dateFunction={Utils.createHumanReadableDate} />
-            <CommentForm commentsCount={currentVideo.comments.length}/>
-            <CommentList comments={currentVideo.comments} dateFunction={Utils.createHumanReadableDate}/>
+            <CommentForm commentsCount={currentVideo.comments.length} />
+            <CommentList comments={currentVideo.comments} dateFunction={Utils.createHumanReadableDate} />
           </main>
           <aside>
-            <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo}/>
+            <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo} />
           </aside>
         </div>
       </>

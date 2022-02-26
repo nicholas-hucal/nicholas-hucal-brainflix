@@ -27,9 +27,11 @@
         flex: 1 1;
         flex-direction: column;
         justify-content: space-between;
+
         @include mixins.tablet {
             max-width: 12rem;
         }
+
         @include mixins.desktop {
             width: 12rem;
         }
@@ -37,9 +39,5 @@
 
     &__title {
         font-weight: 700;
-    }
-
-    &__channel {
-        
     }
 }

@@ -5,9 +5,11 @@
     &__title {
         margin-top: 1rem;
         @include mixins.row;
+
         @include mixins.tablet {
             padding-bottom: 0;
         }
+
         @include mixins.desktop {
             padding-right: 1rem;
         }
@@ -18,14 +20,15 @@
         justify-content: flex-start;
         border-top: 1px solid colors.$secondary-mercury;
         border-bottom: 1px solid colors.$secondary-mercury;
-        @include mixins.row;
         margin: 0.5rem 0;
+        @include mixins.row;
 
         @include mixins.tablet {
             border-top: none;
             justify-content: space-between;
             padding-top: 0;
         }
+
         @include mixins.desktop {
             padding-right: 1rem;
         }
@@ -87,6 +90,7 @@
 
     &__description {
         @include mixins.row;
+        
         @include mixins.desktop {
             padding-right: 1rem;
         }
