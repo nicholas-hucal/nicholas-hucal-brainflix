@@ -5,6 +5,7 @@ import React from 'react';
 import videosJson from './data/videos.json';
 import videosDetailsJson from './data/video-details.json';
 import VideoDetails from './components/VideoDetails/VideoDetails';
+import VideoList from './components/VideoList/VideoList';
 
 class App extends React.Component {
 
@@ -27,7 +28,14 @@ class App extends React.Component {
       <>
         <Nav />
         <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
-        <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
+        <main className='main'>
+          <section className='videoDetails'>
+            <VideoDetails video={currentVideo} dateFunction={formatDateForSite} />
+          </section>
+          <aside className='videosAside'>
+            <VideoList videos={videos}/>
+          </aside>
+        </main>
       </>
     );
   }

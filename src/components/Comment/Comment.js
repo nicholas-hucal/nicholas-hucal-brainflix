@@ -1,9 +1,9 @@
 import './Comment.scss';
 
-function Comment({individualComment, dateFunction}) {
+function Comment({individualComment, dateFunction, last}) {
     const { name, timestamp, comment, likes} = individualComment;
     return (
-        <article className='comment'>
+        <article className={`comment ${last}`}>
             <figure className='comment__avatar-container'>
                 <div className='comment__avatar comment__avatar--no-image'></div>
             </figure>

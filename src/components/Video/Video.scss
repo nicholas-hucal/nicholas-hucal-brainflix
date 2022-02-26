@@ -1,0 +1,41 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/mixins";
+
+.video {
+    // max-width: 40vw;
+    display: flex;
+    padding: 0.5rem 0;
+    
+    &__image-container {
+        overflow: hidden;
+        width: 7rem;
+        height: 4rem;
+        border-radius: 0.25rem;
+    }
+
+    &__image {
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__details {
+        margin-left: 1rem;
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        justify-content: space-between;
+        @include mixins.tablet {
+            max-width: 12rem;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+    }
+
+    &__channel {
+        
+    }
+}

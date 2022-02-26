@@ -1,0 +1,25 @@
+@use "../../styles/partials/colors";
+@use "../../styles/partials/mixins";
+
+.video-list {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+
+    @include mixins.tablet {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    @include mixins.desktop {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+
+    &__heading {
+        text-transform: uppercase;
+        color: colors.$primary-silver;
+        margin: 1.5rem 0 1rem 0;
+    }
+
+}
