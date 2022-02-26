@@ -3,7 +3,7 @@ import './Comment.scss';
 function Comment({individualComment, dateFunction, last}) {
     const { name, timestamp, comment, likes} = individualComment;
     return (
-        <article className={`comment ${last}`}>
+        <article className={`comment ${last}`} data-likes={likes}>
             <figure className='comment__avatar-container'>
                 <div className='comment__avatar comment__avatar--no-image'></div>
             </figure>
