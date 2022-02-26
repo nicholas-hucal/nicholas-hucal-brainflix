@@ -8,7 +8,7 @@ import VideoDetails from './components/VideoDetails/VideoDetails';
 import VideoList from './components/VideoList/VideoList';
 import CommentForm from './components/CommentForm/CommentForm';
 import CommentList from './components/CommentList/CommentList';
-import Utils from './utils/Utils.js';
+import * as Utils from './utils/Utils.js';
 
 class App extends React.Component {
 
@@ -33,9 +33,9 @@ class App extends React.Component {
         <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
         <div className='container'>
           <main>
-            <VideoDetails video={currentVideo} dateFunction={Utils} />
+            <VideoDetails video={currentVideo} dateFunction={Utils.createHumanReadableDate} />
             <CommentForm commentsCount={currentVideo.comments.length}/>
-            <CommentList comments={currentVideo.comments} dateFunction={Utils}/>
+            <CommentList comments={currentVideo.comments} dateFunction={Utils.createHumanReadableDate}/>
           </main>
           <aside>
             <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo}/>
