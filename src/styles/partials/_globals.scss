@@ -17,6 +17,10 @@ input:focus, textarea:focus, select:focus{
     outline: none;
 }
 
+input, textarea {
+    box-sizing: border-box;
+}
+
 ::placeholder { 
     color: colors.$primary-black;
     opacity: 1;

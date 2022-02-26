@@ -5,7 +5,7 @@ import Video from '../Video/Video'
 function VideoList({videos, clickHandler}) {
   return (
     <section className='video-list'>
-        <h5 className='video-list__heading'>Next Videos</h5>
+        <h3 className='video-list__heading'>Next Videos</h3>
         {videos.map(video => {
           return <Video
                     video={video} 

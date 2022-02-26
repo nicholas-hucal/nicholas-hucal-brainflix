@@ -21,14 +21,12 @@ function Nav() {
                 <figure className='nav__avatar'>
                     <img className='nav__avatar-image' src={avatar} alt='avatar for user mohan' />
                 </figure>
-                <form className='nav__submit-form'>
-                    <Button 
-                        className="nav__submit"
-                        image={buttonImg}
-                        text="UPLOAD"
-                        type="submit"
-                        />
-                </form>
+                <Button 
+                    className="nav__button"
+                    image={buttonImg}
+                    text="upload"
+                    type="button"
+                    />
             </section>
         </nav>
     );

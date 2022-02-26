@@ -1,14 +1,14 @@
 import './App.scss';
+import React from 'react';
 import Nav from './components/Nav/Nav';
 import VideoHero from './components/VideoHero/VideoHero';
-import React from 'react';
-import videosData from './data/videos.json';
-import videosDetailsData from './data/video-details.json';
 import VideoDetails from './components/VideoDetails/VideoDetails';
-import VideoList from './components/VideoList/VideoList';
 import CommentForm from './components/CommentForm/CommentForm';
 import CommentList from './components/CommentList/CommentList';
+import VideoList from './components/VideoList/VideoList';
 import * as Utils from './utils/Utils.js';
+import videosData from './data/videos.json';
+import videosDetailsData from './data/video-details.json';
 
 class App extends React.Component {
 

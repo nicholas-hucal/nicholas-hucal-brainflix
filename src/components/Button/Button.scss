@@ -2,12 +2,15 @@
 
 .button {
     position: relative;
-    
+    display: flex;
+    align-items: center;
+
     &__image {
         position: absolute;
         top: 50%;
-        left: 4%;
+        left: 1rem;
         transform: translateY(-50%);
+        cursor: pointer;
     }
 
     &__input {
@@ -15,8 +18,14 @@
         height: 2.5rem;
         background-color: colors.$primary-blue;
         color: colors.$primary-white;
-        border: 1px solid colors.$primary-blue;
+        border: 1px none;
         border-radius: 0.25rem;
         box-sizing: border-box;
+        cursor: pointer;
+        text-transform: uppercase;
+        
+        &:hover {
+            background-color: colors.$secondary-blue;
+        }
     }
 }

@@ -59,21 +59,26 @@
     
     &__search-image {
         position: absolute;
-        top: 0;
-        left: 0.7rem;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
     }
 
     &__search-input {
-        padding: 0.5rem 2.5rem;
+        padding-left: 2.5rem;
         width: 100%;
         box-sizing: border-box;
         height: 2.5rem;
         border-radius: 0.25rem;
         background-color: colors.$secondary-alabaster;
         border: 1px solid colors.$secondary-mercury;
+
+        &:focus  {
+            border: 2px solid colors.$primary-blue;
+        }
     }
 
-    &__submit-form {
+    &__button {
         flex-basis: 100%;
         @include mixins.row;
         @include mixins.tablet {
@@ -83,10 +88,6 @@
         @include mixins.desktop {
             margin-right: 2rem;
         }
-    }
-
-    &__submit {
-        
     }
 
     &__avatar {
