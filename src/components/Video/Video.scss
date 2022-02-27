@@ -27,9 +27,9 @@
         flex: 1 1;
         flex-direction: column;
         justify-content: space-between;
+        max-width: 12rem;
 
         @include mixins.tablet {
-            max-width: 12rem;
         }
 
         @include mixins.desktop {
@@ -39,5 +39,21 @@
 
     &__title {
         font-weight: 700;
+    }
+
+    &__title-content {
+        &--full {
+            display: none;
+           
+            @include mixins.tablet {
+                display: inline-block;
+            }
+        }
+        
+        &--truncate {
+            @include mixins.tablet {
+                display: none;
+            }
+        }
     }
 }
