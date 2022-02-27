@@ -11,16 +11,19 @@ import videosData from './data/videos.json';
 import videosDetailsData from './data/video-details.json';
 
 class App extends React.Component {
+  videosExtended = videosDetailsData
 
   state = {
     videos: videosData,
-    videosExtended: videosDetailsData,
     currentVideo: videosDetailsData[0]
   }
 
+  getCurrentVideo = (videoId) => {
+    return this.videosExtended.find((video) => video.id === videoId)
+  }
+
   updateCurrentVideo = (videoId) => {
-    const newCurrentVideo = this.state.videosExtended.find((video) => video.id === videoId)
-    this.setState({ currentVideo: newCurrentVideo })
+    this.setState({ currentVideo: this.getCurrentVideo(videoId) })
   }
 
   render() {
@@ -30,7 +33,7 @@ class App extends React.Component {
     return (
       <>
         <Nav />
-        <VideoHero videoSrc="/" videoType="video/mp4" posterSrc={currentVideo.image} />
+        <VideoHero videoSrc={currentVideo.video} videoType="video/mp4" posterSrc={currentVideo.image} />
         <div className='container'>
           <main>
             <VideoDetails video={currentVideo} dateFunction={Utils.createHumanReadableDate} />
