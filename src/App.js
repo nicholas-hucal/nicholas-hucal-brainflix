@@ -54,7 +54,7 @@ class App extends React.Component {
       <div className='app'>
         <Nav />
         <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} />
-        <div className='app__container'>
+        <section className='app__container'>
           <main>
             <VideoDetails video={currentVideo} dateFunction={Utils.createHumanReadableDate} />
             <CommentForm commentsCount={currentVideo.comments.length} />
@@ -63,7 +63,7 @@ class App extends React.Component {
           <aside>
             <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo} />
           </aside>
-        </div>
+        </section>
       </div>
     );
   }

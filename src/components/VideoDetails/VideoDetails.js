@@ -10,7 +10,7 @@ function VideoDetails({ video, dateFunction }) {
             <div className='video-details__info'>
                 <div className='video-details__info-start'>
                     <h3 className='video-details__channel'>By {channel}</h3>
-                    <p className='video-details__date'>{dateFunction(timestamp)}</p>
+                    <p className='video-details__date'><time>{dateFunction(timestamp)}</time></p>
                 </div>
                 <div className='video-details__info-end'>
                     <p className='video-details__views'>

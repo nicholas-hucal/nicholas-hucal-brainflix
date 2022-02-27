@@ -13,7 +13,9 @@ function Comment({ individualComment, dateFunction, last }) {
                         {name}
                     </p>
                     <p className='comment__date'>
-                        {dateFunction(timestamp)}
+                        <time>
+                            {dateFunction(timestamp)}
+                        </time>
                     </p>
                 </div>
                 <p className='comment__comment'>

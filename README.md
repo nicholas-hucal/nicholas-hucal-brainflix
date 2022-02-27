@@ -38,7 +38,6 @@ In Sprint 1 we start by creating the layout of the site. Then we add functionali
 - State
     - Videos holds a list of current videos with few details
     - CurrentVideo holds the complete details of the currently selected video
-    - VideosExtended holds the complete details of all available videos
 - Utils
     - formatDateforSite provides a dd/mm/yyyy formated string date for the site
     - createHumanReadableDate provides a human readable date in '1 day ago', '2 months ago' etc.
