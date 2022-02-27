@@ -11,19 +11,39 @@ import videosData from './data/videos.json';
 import videosDetailsData from './data/video-details.json';
 
 class App extends React.Component {
-  videosExtended = videosDetailsData
-
-  state = {
-    videos: videosData,
-    currentVideo: videosDetailsData[0]
-  }
-
+  /**
+   * Simulated API call, future development goes here
+   * @param {String} videoId 
+   * @returns {Object}
+   */
   getCurrentVideo = (videoId) => {
-    return this.videosExtended.find((video) => video.id === videoId)
+    videoId = videoId || '84e96018-4022-434e-80bf-000ce4cd12b8'
+    const videosExtended = videosDetailsData
+    return videosExtended.find((video) => video.id === videoId)
   }
 
+  /**
+   * Simulated API call, future development goes here
+   * @returns {Array}
+   */
+  getVideos = () => {
+    return videosData
+  }
+
+  /**
+   * Updates the state with the currentVideo returned from API/Simulated API
+   * @param {String} videoId to be sent to server
+   */
   updateCurrentVideo = (videoId) => {
     this.setState({ currentVideo: this.getCurrentVideo(videoId) })
+  }
+
+  /**
+   * Sets the state object with a small list of all available videos and the first video and it's details
+   */
+  state = {
+    videos: this.getVideos(),
+    currentVideo: this.getCurrentVideo()
   }
 
   render() {
@@ -31,10 +51,10 @@ class App extends React.Component {
     const filteredVideos = videos.filter(video => video.id !== currentVideo.id)
 
     return (
-      <>
+      <div className='app'>
         <Nav />
-        <VideoHero videoSrc={currentVideo.video} videoType="video/mp4" posterSrc={currentVideo.image} />
-        <div className='container'>
+        <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} />
+        <div className='app__container'>
           <main>
             <VideoDetails video={currentVideo} dateFunction={Utils.createHumanReadableDate} />
             <CommentForm commentsCount={currentVideo.comments.length} />
@@ -44,7 +64,7 @@ class App extends React.Component {
             <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo} />
           </aside>
         </div>
-      </>
+      </div>
     );
   }
 }
