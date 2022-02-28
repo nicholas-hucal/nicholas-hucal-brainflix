@@ -1,5 +1,6 @@
 import './App.scss';
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Nav from './components/Nav/Nav';
 import VideoHero from './components/VideoHero/VideoHero';
 import VideoDetails from './components/VideoDetails/VideoDetails';
