@@ -2,22 +2,26 @@
 @use "../../styles/partials/mixins";
 
 .nav {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    @include mixins.row;
+    border-bottom: 1px solid colors.$secondary-mercury;
 
-    @include mixins.tablet {
-        padding-left: 2.25rem;
-        padding-right: 2.25rem;
-        justify-content: center;
-    }
-
-    @include mixins.desktop {
-        max-width: 64rem;
-        margin-left: auto;
-        margin-right: auto;
+    &__container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        @include mixins.row;
+    
+        @include mixins.tablet {
+            padding-left: 2.25rem;
+            padding-right: 2.25rem;
+            justify-content: center;
+        }
+    
+        @include mixins.desktop {
+            max-width: 64rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     &__logo {
