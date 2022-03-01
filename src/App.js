@@ -1,26 +1,21 @@
 import './App.scss';
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
-import VideoHero from './components/VideoHero/VideoHero';
-import VideoDetails from './components/VideoDetails/VideoDetails';
-import CommentForm from './components/CommentForm/CommentForm';
-import CommentList from './components/CommentList/CommentList';
-import VideoList from './components/VideoList/VideoList';
-import * as Utils from './utils/Utils.js';
 import videosData from './data/videos.json';
 import videosDetailsData from './data/video-details.json';
+import Home from './pages/Home/Home';
+import Upload from './pages/Upload/Upload';
+import NotFound from './pages/NotFound/NotFound';
 
-class App extends React.Component {
+class App extends Component {
   /**
    * Simulated API call, future development goes here
    * @param {String} videoId 
    * @returns {Object}
    */
   getCurrentVideo = (videoId) => {
-    videoId = videoId || '84e96018-4022-434e-80bf-000ce4cd12b8'
-    const videosExtended = videosDetailsData
-    return videosExtended.find((video) => video.id === videoId)
+    return videosDetailsData.find((video) => video.id === videoId) || videosDetailsData[0]
   }
 
   /**
@@ -53,18 +48,25 @@ class App extends React.Component {
 
     return (
       <div className='app'>
-        <Nav />
-        <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} />
-        <section className='app__container'>
-          <main>
-            <VideoDetails video={currentVideo} dateFunction={Utils.createHumanReadableDate} />
-            <CommentForm commentsCount={currentVideo.comments.length} />
-            <CommentList comments={currentVideo.comments} dateFunction={Utils.createHumanReadableDate} />
-          </main>
-          <aside>
-            <VideoList videos={filteredVideos} clickHandler={this.updateCurrentVideo} />
-          </aside>
-        </section>
+        <BrowserRouter>
+          <Nav />
+          <Switch>
+            <Route
+              path="/"
+              exact
+              render={
+                (routerProps) => <Home
+                  currentVideo={currentVideo}
+                  filteredVideos={filteredVideos}
+                  updateCurrentVideo={this.updateCurrentVideo}
+                  {...routerProps}
+                />
+              }
+            />
+            <Route path="/upload" component={Upload} />
+            <Route component={NotFound} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

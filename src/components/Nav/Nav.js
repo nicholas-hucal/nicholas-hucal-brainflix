@@ -4,14 +4,15 @@ import buttonImg from '../../assets/images/icons/upload.svg';
 import searchImg from '../../assets/images/icons/search.svg';
 import avatar from '../../assets/images/images/Mohan-muruge.jpg';
 import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
 
 function Nav() {
     return (
         <nav className='nav'>
             <figure className='nav__logo'>
-                <a className='nav__link' href='/'>
+                <Link className='nav__link' to="/">
                     <img className='nav__logo-image' src={logo} alt='brainflix logo' />
-                </a>
+                </Link>
             </figure>
             <section className='nav__content'>
                 <form className='nav__search-form'>
@@ -27,7 +28,8 @@ function Nav() {
                     className="nav__button"
                     image={buttonImg}
                     text="upload"
-                    type="button"
+                    type="link"
+                    href="/upload"
                 />
             </section>
         </nav>
