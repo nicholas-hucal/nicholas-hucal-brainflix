@@ -3,7 +3,6 @@
 
 .video-hero {
     background-color: colors.$secondary-black;
-
     &__container {
         @include mixins.tablet {
             padding-left: 2.25rem;

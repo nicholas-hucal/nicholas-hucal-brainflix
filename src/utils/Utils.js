@@ -6,6 +6,9 @@ const formatDateforSite = (timestamp) => {
 }
 
 export const createHumanReadableDate = (timestamp) => {
+    if (!timestamp) {
+        return false
+    }
     let currentTimestamp = new Date().getTime();
     let timeDifference = currentTimestamp - timestamp;
     let types = ['seconds', 'mins', 'hours', 'days', 'months', 'years'];

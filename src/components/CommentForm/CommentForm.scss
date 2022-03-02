@@ -2,6 +2,10 @@
 @use "../../styles/partials/mixins";
 
 .comment-form {
+    @include mixins.desktop {
+        padding-right: 1rem;
+    }
+
     &__form-container {
         display: flex;
         border-bottom: 1px solid colors.$secondary-mercury;

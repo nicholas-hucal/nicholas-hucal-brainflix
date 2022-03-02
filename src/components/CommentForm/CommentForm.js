@@ -3,12 +3,11 @@ import buttonImg from '../../assets/images/icons/add_comment.svg';
 import avatar from '../../assets/images/images/Mohan-muruge.jpg';
 import Button from '../Button/Button';
 
-function CommentForm({ commentsCount }) {
+function CommentForm({ commentsCount, isLoaded }) {
 
     const handleForm = (event) => {
         event.preventDefault()
     }
-
     return (
         <section className='comment-form'>
             <h2 className='comment-form__heading'>{commentsCount} Comments</h2>

@@ -1,6 +1,7 @@
 import './Comment.scss';
+import * as utils from '../../utils/utils.js';
 
-function Comment({ individualComment, dateFunction, last }) {
+function Comment({ individualComment, last }) {
     const { name, timestamp, comment, likes } = individualComment;
     return (
         <article className={`comment ${last}`} data-likes={likes}>
@@ -14,7 +15,7 @@ function Comment({ individualComment, dateFunction, last }) {
                     </p>
                     <p className='comment__date'>
                         <time>
-                            {dateFunction(timestamp)}
+                            {utils.createHumanReadableDate(timestamp)}
                         </time>
                     </p>
                 </div>

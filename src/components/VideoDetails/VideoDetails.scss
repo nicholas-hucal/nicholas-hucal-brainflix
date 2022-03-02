@@ -2,6 +2,9 @@
 @use "../../styles/partials/mixins";
 
 .video-details {
+    @include mixins.desktop {
+        padding-right: 1rem;
+    }
     &__title {
         margin-top: 1rem;
         @include mixins.row;
@@ -35,10 +38,7 @@
     }
 
     &__info-start {
-        flex-basis: 50%;
-
         @include mixins.tablet {
-            flex-basis: 40%;
             display: flex;
             justify-content: flex-start;
         }
