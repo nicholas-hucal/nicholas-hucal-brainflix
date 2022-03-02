@@ -49,13 +49,15 @@
 
     &__thumbnail {
         border-radius: 0.25rem;
+        margin-top: 0.25rem;
+
         @include mixins.tablet {
             width: 50%;
         }
 
         @include mixins.desktop {
             width: auto;
-            height: 9rem;
+            height: 12rem;
         }
     }
 
@@ -70,15 +72,14 @@
     &__input-description, &__input-title {
         width: 100%;
         box-sizing: border-box;
-        height: 6rem;
+        height: 5rem;
         border-radius: 0.25rem;
         border: 1px solid colors.$secondary-mercury;
         padding: 0.75rem;
         resize: none;
+        margin-top: 0.25rem;
 
         @include mixins.desktop {
-            height: 2.5rem;
-            flex: 2;
             margin-right: 1rem;
             overflow: hidden;
             padding: 0.6rem;
@@ -86,6 +87,12 @@
 
         &:focus  {
             border: 2px solid colors.$primary-blue;
+        }
+    }
+
+    &__input-description {
+        @include mixins.desktop {
+            height: 6rem;
         }
     }
 
@@ -101,11 +108,17 @@
             margin-left: 1rem;
             width: 25%;
         }
+        @include mixins.desktop {
+            width: 18%;
+        }
     }
 
     &__cancel {
         @include mixins.tablet {
             width: 25%;
+        }
+        @include mixins.desktop {
+            width: 18%;
         }
     }
 

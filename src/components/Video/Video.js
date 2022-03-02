@@ -1,9 +1,11 @@
 import './Video.scss'
+import { Link } from 'react-router-dom';
 
-function Video({ video, clickHandler }) {
+function Video({ video }) {
     const { id, title, channel, image } = video;
     return (
-        <article className='video' onClick={() => clickHandler(id)}>
+
+        <Link to={`/${id}`} className='video'>
             <div className='video__image-container'>
                 <img className='video__image' src={image} alt={title} />
             </div>
@@ -18,7 +20,7 @@ function Video({ video, clickHandler }) {
                 </p>
                 <p className='video__channel'>{channel}</p>
             </div>
-        </article>
+        </Link>
     )
 }
 

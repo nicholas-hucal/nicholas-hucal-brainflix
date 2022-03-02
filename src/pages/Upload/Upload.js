@@ -23,7 +23,7 @@ const Upload = props => {
                             </label>
                             <label className='video-upload__label'>
                                 Add a video description
-                                <textarea className='video-upload__input-description' type="text" name="title" placeholder="Add a title to your video"></textarea>
+                                <textarea className='video-upload__input-description' type="text" name="title" placeholder="Add a description to your video"></textarea>
                             </label>
                         </div>
                     </div>
@@ -33,11 +33,13 @@ const Upload = props => {
                             image={publishImg}
                             text="publish"
                             type="submit"
+                            clickHandler={(e)=>e.preventDefault()}
                         />
                         <Button
                             className="video-upload__cancel"
                             text="cancel"
                             type="cancel"
+                            href="/"
                         />
                     </div>
                 </form>
