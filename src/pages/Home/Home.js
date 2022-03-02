@@ -25,11 +25,13 @@ class Home extends Component {
     
     
     componentDidMount() {
+        console.log('mount')
         this.updateCurrentVideo(this.props.match.params.id)
     }
     
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.match.params.id !== this.props.match.params.id) {
+            console.log('update')
             this.updateCurrentVideo(this.props.match.params.id);
         }
     }
