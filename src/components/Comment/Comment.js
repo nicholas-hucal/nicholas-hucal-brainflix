@@ -1,5 +1,5 @@
 import './Comment.scss';
-import * as utils from '../../utils/utils.js';
+import { format } from 'timeago.js';
 
 function Comment({ individualComment, last, isLoaded }) {
     const { name, timestamp, comment, likes } = individualComment;
@@ -15,7 +15,7 @@ function Comment({ individualComment, last, isLoaded }) {
                     </p>
                     <p className={`comment__date ${isLoaded ? '' : 'comment__date--loading'}`}>
                         <time>
-                            {utils.createHumanReadableDate(timestamp)}
+                            {timestamp && format(timestamp)}
                         </time>
                     </p>
                 </div>

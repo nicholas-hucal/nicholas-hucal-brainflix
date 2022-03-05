@@ -1,8 +1,7 @@
 import './VideoDetails.scss';
 import viewIcon from '../../assets/images/icons/views.svg';
 import likeIcon from '../../assets/images/icons/likes.svg';
-import * as utils from '../../utils/utils.js';
-import Loading from '../Loading/Loading';
+import { format } from 'timeago.js';
 
 function VideoDetails({ video, isLoaded }) {
     const { title, channel, timestamp, views, likes, description, comments } = video;
@@ -13,7 +12,7 @@ function VideoDetails({ video, isLoaded }) {
             <div className='video-details__info'>
                 <div className='video-details__info-start'>
                     <h3 className='video-details__channel'>By {channel ? channel : 'channel'}</h3>
-                    <p className='video-details__date'><time>{timestamp ? utils.createHumanReadableDate(timestamp) : 'some time ago'}</time></p>
+                    <p className='video-details__date'><time>{timestamp ? format(timestamp) : 'some time ago'}</time></p>
                 </div>
                 <div className='video-details__info-end'>
                     <p className='video-details__views'>
@@ -38,7 +37,6 @@ function VideoDetails({ video, isLoaded }) {
                 {description}
             </p>
             <h2 className='comment-form__heading'>{comments && comments.length} Comments</h2>
-
         </section>
     );
 }
