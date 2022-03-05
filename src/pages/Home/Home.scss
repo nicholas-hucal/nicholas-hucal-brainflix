@@ -1,4 +1,22 @@
+@use '../../styles/partials/mixins';
+
 .home {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    @include mixins.tablet {
+        padding-left: 2.25rem;
+        padding-right: 2.25rem;
+    }
+    
+    @include mixins.desktop {
+        flex-direction: row;
+        max-width: 64rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
     &__main{
         flex: 2 1;
     }

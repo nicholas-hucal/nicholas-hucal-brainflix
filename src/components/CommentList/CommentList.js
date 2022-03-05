@@ -1,20 +1,17 @@
 import Comment from '../Comment/Comment';
-import Loading from '../Loading/Loading';
+import { v4 as uuidv4 } from 'uuid';
 
 function CommentList({ comments, isLoaded }) {
-    if (!isLoaded) {
-        return (
-            <Loading />
-        )
-    }
+    const allComments = comments ? comments : Array.from(Array(3), () => []);
     return (
         <section className='comment-list'>
-            {comments.map((comment, index, array) => {
+            {allComments.map((comment, index, array) => {
                 const last = array.length - 1 === index ? 'comment--last' : '';
                 return <Comment
                     individualComment={comment}
-                    key={comment.timestamp}
+                    key={uuidv4()}
                     last={last}
+                    isLoaded={isLoaded}
                 />
             })}
         </section>

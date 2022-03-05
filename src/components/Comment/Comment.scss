@@ -46,11 +46,31 @@
     &__name {
         flex: 1;
         font-weight: 700;
+        &--loading {
+            @include mixins.loading{
+                height: 1rem;
+                margin-right: 50%;
+            }
+        }
     }
 
     &__date {
         flex: 1;
         color: colors.$primary-silver;
         text-align: right;
+        &--loading {
+            @include mixins.loading {
+                height: 1rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+
+    &__comment { 
+        &--loading {
+            @include mixins.loading {
+                height: 3rem;
+            }
+        }
     }
 }

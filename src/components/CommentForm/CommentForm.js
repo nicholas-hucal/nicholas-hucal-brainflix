@@ -10,7 +10,6 @@ function CommentForm({ commentsCount, isLoaded }) {
     }
     return (
         <section className='comment-form'>
-            <h2 className='comment-form__heading'>{commentsCount} Comments</h2>
             <div className='comment-form__form-container'>
                 <figure className='comment-form__avatar-container'>
                     <img className='comment-form__avatar' src={avatar} alt="avatar for Mohan Muruge" />

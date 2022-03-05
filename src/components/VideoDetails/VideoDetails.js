@@ -5,21 +5,15 @@ import * as utils from '../../utils/utils.js';
 import Loading from '../Loading/Loading';
 
 function VideoDetails({ video, isLoaded }) {
-    const { title, channel, timestamp, views, likes, description } = video;
-  
-    if (!isLoaded) {
-        return (
-            <Loading/>
-        )
-    }
+    const { title, channel, timestamp, views, likes, description, comments } = video;
   
     return (
         <section className='video-details'>
-            <h1 className='video-details__title'>{title}</h1>
+            <h1 className={`video-details__title ${isLoaded ? '' : 'video-details__title--loading'}`}>{title}</h1>
             <div className='video-details__info'>
                 <div className='video-details__info-start'>
-                    <h3 className='video-details__channel'>By {channel}</h3>
-                    <p className='video-details__date'><time>{utils.createHumanReadableDate(timestamp)}</time></p>
+                    <h3 className='video-details__channel'>By {channel ? channel : 'channel'}</h3>
+                    <p className='video-details__date'><time>{timestamp ? utils.createHumanReadableDate(timestamp) : 'some time ago'}</time></p>
                 </div>
                 <div className='video-details__info-end'>
                     <p className='video-details__views'>
@@ -40,9 +34,11 @@ function VideoDetails({ video, isLoaded }) {
                     </p>
                 </div>
             </div>
-            <p className='video-details__description'>
-                {description};
+            <p className={`video-details__description ${isLoaded ? '' : 'video-details__description--loading'}`}>
+                {description}
             </p>
+            <h2 className='comment-form__heading'>{comments && comments.length} Comments</h2>
+
         </section>
     );
 }

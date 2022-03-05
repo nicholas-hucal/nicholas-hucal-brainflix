@@ -1,7 +1,7 @@
 import './Comment.scss';
 import * as utils from '../../utils/utils.js';
 
-function Comment({ individualComment, last }) {
+function Comment({ individualComment, last, isLoaded }) {
     const { name, timestamp, comment, likes } = individualComment;
     return (
         <article className={`comment ${last}`} data-likes={likes}>
@@ -10,16 +10,16 @@ function Comment({ individualComment, last }) {
             </figure>
             <section className='comment__info'>
                 <div className='comment__details'>
-                    <p className='comment__name'>
+                    <p className={`comment__name ${isLoaded ? '' : 'comment__name--loading'}`}>
                         {name}
                     </p>
-                    <p className='comment__date'>
+                    <p className={`comment__date ${isLoaded ? '' : 'comment__date--loading'}`}>
                         <time>
                             {utils.createHumanReadableDate(timestamp)}
                         </time>
                     </p>
                 </div>
-                <p className='comment__comment'>
+                <p className={`comment__comment ${isLoaded ? '' : 'comment__comment--loading'}`}>
                     {comment}
                 </p>
             </section>

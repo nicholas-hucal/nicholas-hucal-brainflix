@@ -2,9 +2,6 @@
 @use "../../styles/partials/mixins";
 
 .video-details {
-    @include mixins.desktop {
-        padding-right: 1rem;
-    }
     &__title {
         margin-top: 1rem;
         @include mixins.row;
@@ -15,6 +12,17 @@
 
         @include mixins.desktop {
             padding-right: 1rem;
+        }
+        &--loading {
+            @include mixins.loading {
+                height: 2rem;
+                margin-top: 1.5rem;
+                margin-bottom: 1rem;
+                
+                @include mixins.desktop {
+                    margin-right: 1rem;
+                }
+            }
         }
     }
 
@@ -38,6 +46,7 @@
     }
 
     &__info-start {
+        flex-basis: 50%;
         @include mixins.tablet {
             display: flex;
             justify-content: flex-start;
@@ -93,6 +102,18 @@
         
         @include mixins.desktop {
             padding-right: 1rem;
+        }
+        
+        &--loading {
+            @include mixins.loading {
+                height: 5rem;
+                margin-top: 1.5rem;
+                margin-bottom: 2rem;
+                
+                @include mixins.desktop {
+                    margin-right: 1rem;
+                }
+            }
         }
     }
 }

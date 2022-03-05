@@ -23,7 +23,6 @@ class Home extends Component {
                 this.setState({ 
                     currentVideo: response.data,
                     currentVideoIsLoaded: true,
-                    commentCount: response.data.comments.length
                 })
             })
             .catch(error => {
@@ -40,13 +39,11 @@ class Home extends Component {
                     videosIsLoaded: true
                 })
                 videoId = videoId ? videoId : response.data[0].id;
-                setTimeout(() =>{
-                    this.getCurrentVideo(videoId);
-                }, 3500)
+                this.getCurrentVideo(videoId);
             })
             .catch(error => {
                 console.log(error);
-            })
+            })     
     } 
 
     componentDidMount() {
@@ -55,22 +52,25 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.match.params.id !== this.props.match.params.id) {
-            console.log('update')
-            this.getCurrentVideo(this.props.match.params.id);
+        const currentId = this.props.match.params.id;
+        const prevId = prevProps.match.params.id
+        if ((prevId !== currentId)) {
+            console.log('update');
+            this.getCurrentVideo(currentId || this.state.videos[0].id);
+            window.scrollTo(0,0);
         }
     }
 
     render() {
-        const { videos, commentCount, currentVideo, videosIsLoaded, currentVideoIsLoaded } = this.state;
+        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded } = this.state;
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id)
         return (
             <>
                 <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} isLoaded={currentVideoIsLoaded}/>
-                <section className='app__container home'>
+                <section className='home'>
                     <main className='home__main'>
                         <VideoDetails video={currentVideo} isLoaded={currentVideoIsLoaded}/>
-                        <CommentForm commentsCount={commentCount} isLoaded={currentVideoIsLoaded}/>
+                        <CommentForm isLoaded={currentVideoIsLoaded}/>
                         <CommentList comments={currentVideo.comments} isLoaded={currentVideoIsLoaded}/>
                     </main>
                     <aside className='home__aside'>

@@ -1,20 +1,17 @@
 import './VideoList.scss'
 import Video from '../Video/Video';
-import Loading from '../Loading/Loading';
+import { v4 as uuidv4 } from 'uuid';
 
 function VideoList({ videos, isLoaded }) {
-  if (!isLoaded) {
-    return (
-      <Loading />
-    )
-  }
+  const allVideos = videos.length > 0 ? videos : Array.from(Array(8), () => []);
   return (
     <section className='video-list'>
       <h3 className='video-list__heading'>Next Videos</h3>
-      {videos.map(video => {
+      {allVideos.map(video => {
         return <Video
           video={video}
-          key={video.id} />
+          key={uuidv4()}
+          isLoaded={isLoaded} />
       })}
     </section>
   )
