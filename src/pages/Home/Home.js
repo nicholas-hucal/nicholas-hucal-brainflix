@@ -12,6 +12,7 @@ class Home extends Component {
     state = {
         videos: [],
         currentVideo: [],
+        comments: [],
         videosIsLoaded: false,
         currentVideoIsLoaded: false,
         requestError: false,
@@ -24,10 +25,11 @@ class Home extends Component {
                 this.setState({ 
                     currentVideo: response.data,
                     currentVideoIsLoaded: true,
+                    comments: response.data.comments.sort((a,b) => b.timestamp - a.timestamp)
                 })
             })
             .catch(() => {
-                this.showNotification();
+                this.toggleNotification();
             })
     }
 
@@ -43,9 +45,27 @@ class Home extends Component {
                 this.getCurrentVideo(videoId);
             })
             .catch(() => {
-                this.showNotification();
+                this.toggleNotification();
             })     
     } 
+
+    addComment = (videoId) => {
+        this.getCurrentVideo(videoId);
+    } 
+
+    deleteComment = (commentId, videoId) => {
+        console.log(commentId, videoId);
+        api
+            .deleteComment(commentId, videoId)
+            .then(response => {
+                console.log(response)
+                this.getCurrentVideo(videoId);
+            })
+            .catch(error => {
+                console.log(error);
+                this.toggleNotification();
+            })
+    }
 
     componentDidMount() {
         this.getVideos(this.props.match.params.id);
@@ -60,20 +80,14 @@ class Home extends Component {
         }
     }
 
-    showNotification = () => {
+    toggleNotification = () => {
         this.setState({
-            requestError: true
-        });
-    }
-
-    hideNotification = () => {
-        this.setState({
-            requestError: false
+            requestError: !this.state.requestError
         });
     }
 
     render() {
-        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError } = this.state;
+        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError, comments } = this.state;
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id);
          
         return (
@@ -82,14 +96,19 @@ class Home extends Component {
                 <section className='home'>
                     <main className='home__main'>
                         <VideoDetails video={currentVideo} isLoaded={currentVideoIsLoaded}/>
-                        <CommentForm isLoaded={currentVideoIsLoaded}/>
-                        <CommentList comments={currentVideo.comments} isLoaded={currentVideoIsLoaded}/>
+                        <CommentForm video={currentVideo} addComment={this.addComment}/>
+                        <CommentList 
+                            video={currentVideo}
+                            comments={comments}
+                            deleteComment={this.deleteComment}
+                            isLoaded={currentVideoIsLoaded}
+                        />
                     </main>
                     <aside className='home__aside'>
                         <VideoList videos={filteredVideos} isLoaded={videosIsLoaded}/>
                     </aside>
                 </section>
-                { requestError && <Notification title='Network Error' message='There was an error with your request, please refresh the page and try again.' clickHandler={this.hideNotification} /> }
+                { requestError && <Notification title='Network Error' message='There was an error with your request, please refresh the page and try again.' clickHandler={this.toggleNotification} /> }
             </>
         )
     }

@@ -1,8 +1,8 @@
 import Comment from '../Comment/Comment';
 import { v4 as uuidv4 } from 'uuid';
 
-function CommentList({ comments, isLoaded }) {
-    const allComments = comments ? comments : Array.from(Array(3), () => []);
+function CommentList({ comments, isLoaded, deleteComment, video }) {
+    const allComments = comments.length > 1 ? comments : Array.from(Array(3), () => []);
 
     return (
         <section className='comment-list'>
@@ -14,6 +14,8 @@ function CommentList({ comments, isLoaded }) {
                     key={uuidv4()}
                     last={last}
                     isLoaded={isLoaded}
+                    deleteComment={deleteComment}
+                    video={video}
                 />
             })}
         </section>

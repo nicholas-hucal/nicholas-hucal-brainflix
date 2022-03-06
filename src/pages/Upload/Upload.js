@@ -1,5 +1,6 @@
 import './Upload.scss';
 import { Component } from 'react';
+import { isFieldValid, isFormValid, emptyForm } from '../../utils/validation';
 import fields from '../../utils/fields.js';
 import Button from '../../components/Button/Button';
 import Notification from '../../components/Notification/Notification';
@@ -15,46 +16,21 @@ class Upload extends Component {
     }
 
     handleChange = (event, field) => {
-        this.isFieldValid(event, field);
-    }
-
-    isFieldValid = (event, field) => {
-        const { name, value } = event.target;
-        const currentState = [...this.state.fields];
-        let currentIndex = 0;
-        const fields = currentState.map((stateField, index) => {
-            if (stateField.name === field.name) {
-                stateField.text = value;
-                currentIndex = index;
-            }
-            return stateField;
-        })
-        if (fields[currentIndex].validation.type === 'length') {
-            if (fields[currentIndex].text.length < fields[currentIndex].validation.check) {
-                fields[currentIndex].error = 1;
-                fields[currentIndex].valid = 0;
-            } else {
-                fields[currentIndex].error = 0;
-                fields[currentIndex].valid = 1;
-            }
-        }
-        this.setState({fields: fields});
-        this.isFormValid();
-    }
-
-    isFormValid = () => {
-        const fields = [...this.state.fields];
-        const sum = fields.reduce((field, {valid}) => field + valid, 0);
+        const fields = isFieldValid(event, field, [...this.state.fields]);
+        const sum = isFormValid(fields);
         this.setState({
-            isValid: Number(sum) === fields.length ? 1 : 0
+            isValid: Number(sum) === fields.length ? 1 : 0,
+            fields: fields
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({
-            submitted: 1
+            submitted: 1,
+            fields: emptyForm([...this.state.fields])
         });
+        
         setTimeout(() => {
             this.props.history.push('/');
             window.scrollTo(0,0);
