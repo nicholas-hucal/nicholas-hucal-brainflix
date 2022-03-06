@@ -1,13 +1,13 @@
 import './CommentForm.scss';
 import React, { Component } from 'react';
-import { isFieldValid, isFormValid, emptyForm } from '../../utils/validation';
+import { isFieldValid, isFormValid, emptyForm } from '../../utils/validation.js';
 import fields from '../../utils/fields.js';
 import buttonImg from '../../assets/images/icons/add_comment.svg';
 import avatarImg from '../../assets/images/images/Mohan-muruge.jpg';
 import Button from '../Button/Button';
 import Inputs from '../Inputs/Inputs';
 import Avatar from '../Avatar/Avatar';
-import api from '../../utils/api';
+import api from '../../utils/api.js';
 
 class Commentform extends Component {
 
