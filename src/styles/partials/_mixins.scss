@@ -24,6 +24,10 @@
     @content;
 }
 
+@mixin hasError {
+    border: 1px solid colors.$has-error !important;
+}
+
 @keyframes pulsingBackground{
     0%		{ background-color: colors.$secondary-mercury;}
     25%		{ background-color: colors.$secondary-alabaster}

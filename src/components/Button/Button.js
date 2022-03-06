@@ -1,12 +1,12 @@
 import './Button.scss';
 import { Link } from 'react-router-dom'
 
-function Button({ className, alt, text, type, image, clickHandler, href }) {
+function Button({ className, alt, text, type, image, clickHandler, href, disable}) {
     if (type !== 'link' && type !== 'cancel') {
         return (
             <label className={`button ${className}`} onClick={clickHandler}>
                 <img className='button__image' src={image} alt={alt} />
-                <input className='button__input' type={type} value={text} />
+                <input className={`button__input ${disable || 'button__input--disabled'}`} type={type} value={text} disabled={disable ? false : true} />
             </label>
         )
     } else if (type === 'cancel') {
@@ -23,7 +23,6 @@ function Button({ className, alt, text, type, image, clickHandler, href }) {
             </Link>
         )
     }
-
 }
 
 export default Button

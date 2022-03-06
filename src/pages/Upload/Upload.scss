@@ -3,6 +3,8 @@
 
 .video-upload {
     width: 100%;
+    margin-bottom: 2rem;
+    
     &__heading {
         margin-top: 1.5rem;
         margin-bottom: 1rem;
@@ -67,37 +69,6 @@
         text-transform: uppercase;
         color: colors.$primary-silver;
         margin-bottom: 1rem;
-    }
-
-    &__input-description, &__input-title {
-        width: 100%;
-        box-sizing: border-box;
-        height: 5rem;
-        border-radius: 0.25rem;
-        border: 1px solid colors.$secondary-mercury;
-        padding: 0.75rem;
-        resize: none;
-        margin-top: 0.25rem;
-
-        @include mixins.desktop {
-            margin-right: 1rem;
-            overflow: hidden;
-            padding: 0.6rem;
-        }
-
-        &:focus  {
-            border: 2px solid colors.$primary-blue;
-        }
-    }
-
-    &__input-description {
-        @include mixins.desktop {
-            height: 6rem;
-        }
-    }
-
-    &__input-title {
-        height: 2.5rem;
     }
 
     &__submit {

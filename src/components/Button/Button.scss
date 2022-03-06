@@ -13,6 +13,7 @@
         left: 1rem;
         transform: translateY(-50%);
         cursor: pointer;
+        z-index: 2;
     }
 
     &__input, &__link, &__cancel {
@@ -29,6 +30,12 @@
 
         &:hover {
             background-color: colors.$secondary-blue;
+        }
+    }
+
+    &__input {
+        &--disabled {
+            opacity: 0.5;
         }
     }
 
