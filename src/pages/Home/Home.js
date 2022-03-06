@@ -66,6 +66,12 @@ class Home extends Component {
         });
     }
 
+    hideNotification = () => {
+        this.setState({
+            requestError: false
+        });
+    }
+
     render() {
         const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError } = this.state;
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id);
@@ -83,7 +89,7 @@ class Home extends Component {
                         <VideoList videos={filteredVideos} isLoaded={videosIsLoaded}/>
                     </aside>
                 </section>
-                { requestError && <Notification title='Network Error' message='There was an error with your request, please refresh the page and try again.' /> }
+                { requestError && <Notification title='Network Error' message='There was an error with your request, please refresh the page and try again.' clickHandler={this.hideNotification} /> }
             </>
         )
     }
