@@ -1,12 +1,11 @@
 import './Upload.scss'
 import { Component } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import Button from '../../components/Button/Button';
 import Notification from '../../components/Notification/Notification';
 import publishImg from '../../assets/images/icons/publish.svg'
 import thumbImg from '../../assets/images/images/Upload-video-preview.jpg'
 import Inputs from '../../components/Inputs/Inputs'
-import { v4 as uuidv4 } from 'uuid';
-import {Redirect} from 'react-router-dom';
 
 class Upload extends Component {
     state = {
@@ -65,13 +64,12 @@ class Upload extends Component {
             if (fields[currentIndex].text.length < fields[currentIndex].validation.check) {
                 fields[currentIndex].error = 1;
                 fields[currentIndex].valid = 0;
-                this.setState({fields: fields});
             } else {
                 fields[currentIndex].error = 0;
                 fields[currentIndex].valid = 1;
-                this.setState({fields: fields});
             }
         }
+        this.setState({fields: fields});
         this.isFormValid()
     }
 
@@ -79,7 +77,7 @@ class Upload extends Component {
         const fields = [...this.state.fields];
         const sum = fields.reduce((field, {valid}) => field + valid, 0) 
         this.setState({
-            isValid: Number(sum) === 2 ? 1 : 0 
+            isValid: Number(sum) === fields.length ? 1 : 0 
         })
     }
 
@@ -94,14 +92,8 @@ class Upload extends Component {
         }, 5000)
     }
 
-    showNotification = () => {
-
-    }
-
-
     render() {
         const { fields, isValid, submitted } = this.state;
-        console.log(isValid)
 
         return (
             <section className='app__container'>
@@ -138,9 +130,9 @@ class Upload extends Component {
                         </section>
                     </form>
                 </main>
-                {submitted === 1 && 
+                { submitted === 1 && 
                     <Notification 
-                        title="Thank you for your submission" 
+                        title="Thank you for your upload" 
                         message="You will be redirected to the homepage in 5 seconds."
                     />
                 }
