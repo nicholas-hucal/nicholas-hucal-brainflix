@@ -12,4 +12,4 @@ function VideoHero({ posterSrc, videoSrc, videoType }) {
     )
 }
 
-export default VideoHero
+export default VideoHero;

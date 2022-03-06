@@ -1,52 +1,21 @@
-import './Upload.scss'
-import { Component } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import './Upload.scss';
+import { Component } from 'react';
+import fields from '../../utils/fields.js';
 import Button from '../../components/Button/Button';
 import Notification from '../../components/Notification/Notification';
-import publishImg from '../../assets/images/icons/publish.svg'
-import thumbImg from '../../assets/images/images/Upload-video-preview.jpg'
-import Inputs from '../../components/Inputs/Inputs'
+import publishImg from '../../assets/images/icons/publish.svg';
+import thumbImg from '../../assets/images/images/Upload-video-preview.jpg';
+import Inputs from '../../components/Inputs/Inputs';
 
 class Upload extends Component {
     state = {
-        fields: [
-            {
-                name: 'title',
-                label: 'Title Your Video',
-                type: 'text',
-                validation: {
-                    type: 'length',
-                    check: 3,
-                    errorMessage: 'You must enter more than 3 characters'
-                },
-                placeholder: 'Add a title to your video',
-                error: 0,
-                text: '',
-                id: uuidv4(),
-                valid: 0
-            },
-            {
-                name: 'description',
-                label: 'Add a video description',
-                type: 'textarea',
-                validation: {
-                    type: 'length',
-                    check: 10,
-                    errorMessage: 'You must enter more than 10 characters'
-                },
-                placeholder: 'Add a description to your video',
-                error: 0,
-                text: '',
-                id: uuidv4(),
-                valid: 0
-            }
-        ],
+        fields: fields.upload,
         isValid: 0,
         submitted: 0
     }
 
-    handleChange = (event, validation) => {
-        this.isFieldValid(event, validation);
+    handleChange = (event, field) => {
+        this.isFieldValid(event, field);
     }
 
     isFieldValid = (event, field) => {
@@ -70,14 +39,14 @@ class Upload extends Component {
             }
         }
         this.setState({fields: fields});
-        this.isFormValid()
+        this.isFormValid();
     }
 
     isFormValid = () => {
         const fields = [...this.state.fields];
-        const sum = fields.reduce((field, {valid}) => field + valid, 0) 
+        const sum = fields.reduce((field, {valid}) => field + valid, 0);
         this.setState({
-            isValid: Number(sum) === fields.length ? 1 : 0 
+            isValid: Number(sum) === fields.length ? 1 : 0
         })
     }
 
@@ -85,19 +54,19 @@ class Upload extends Component {
         event.preventDefault();
         this.setState({
             submitted: 1
-        })
+        });
         setTimeout(() => {
             this.props.history.push('/');
             window.scrollTo(0,0);
-        }, 5000)
+        }, 5000);
     }
 
     render() {
         const { fields, isValid, submitted } = this.state;
 
         return (
-            <section className='app__container'>
-                <main className='video-upload'>
+            <main className='video-upload'>
+                <div className='video-upload__container'>
                     <h1 className='video-upload__heading'>Upload Video</h1>
                     <form className='video-upload__form' onSubmit={this.handleSubmit}>
                         <section className='video-upload__form-inputs'>
@@ -129,14 +98,14 @@ class Upload extends Component {
                             />
                         </section>
                     </form>
-                </main>
-                { submitted === 1 && 
-                    <Notification 
-                        title="Thank you for your upload" 
-                        message="You will be redirected to the homepage in 5 seconds."
-                    />
-                }
-            </section>
+                    { submitted === 1 && 
+                        <Notification 
+                            title="Thank you for your upload" 
+                            message="You will be redirected to the homepage in 5 seconds."
+                        />
+                    }
+                </div>
+            </main>
         )
     }
 }

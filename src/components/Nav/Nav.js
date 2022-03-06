@@ -1,10 +1,11 @@
 import './Nav.scss';
+import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo/BrainFlix-logo.svg';
 import buttonImg from '../../assets/images/icons/upload.svg';
 import searchImg from '../../assets/images/icons/search.svg';
-import avatar from '../../assets/images/images/Mohan-muruge.jpg';
+import avatarImg from '../../assets/images/images/Mohan-muruge.jpg';
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import Avatar from '../Avatar/Avatar';
 
 function Nav() {
     return (
@@ -22,9 +23,7 @@ function Nav() {
                             <input className='nav__search-input' type='text' name='nav-search' placeholder='Search' />
                         </label>
                     </form>
-                    <figure className='nav__avatar'>
-                        <img className='nav__avatar-image' src={avatar} alt='avatar for user mohan' />
-                    </figure>
+                    <Avatar image={avatarImg} alt="avatar for user mohan" parentClass='nav__avatar' imgClass='nav__avatar-image'/>
                     <Button
                         className="nav__button"
                         image={buttonImg}

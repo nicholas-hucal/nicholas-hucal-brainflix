@@ -3,11 +3,11 @@ import './Inputs.scss';
 
 function Inputs({field, handleChange}) {
     return (
-        <label className='input'>
+        <label className={`input ${field.parentClass}`}>
             {field.label}
             {field.type === 'text' && 
                 <input
-                    className={`input__input ${!field.error ? '' : 'input__input--has-error'}`}
+                    className={`input__input ${!field.error ? '' : 'input__input--has-error'} ${field.class}`}
                     type={field.type}
                     name={field.name}
                     onChange={(event) => handleChange(event, field)}
@@ -17,7 +17,7 @@ function Inputs({field, handleChange}) {
             }
             {field.type === 'textarea' && 
                 <textarea
-                    className={`input__textarea ${!field.error ? '' : 'input__textarea--has-error'}`}
+                    className={`input__textarea ${!field.error ? '' : 'input__textarea--has-error'} ${field.class}`}
                     type={field.type}
                     name={field.name}
                     onChange={(event) => handleChange(event, field)}

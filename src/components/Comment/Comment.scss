@@ -15,22 +15,6 @@
         }
     }
 
-    &__avatar-container {
-        width: 2.5rem;
-        height: 2.5rem;
-        overflow: hidden;
-        border-radius: 50%;
-    }
-
-    &__avatar {
-        margin: 0 auto;
-        height: 100%;
-
-        &--no-image {
-            background-color: colors.$secondary-mercury;
-        }
-    }
-
     &__info {
         display: flex;
         flex-direction: column;

@@ -2,21 +2,13 @@
 @use '../../styles/partials/mixins';
 
 .input {
-    display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
-    color: colors.$primary-silver;
-    margin-bottom: 1rem;
-
     &__textarea, &__input {
         width: 100%;
         box-sizing: border-box;
-        height: 5rem;
         border-radius: 0.25rem;
         border: 1px solid colors.$secondary-mercury;
         padding: 0.75rem;
         resize: none;
-        margin-top: 0.25rem;
 
         @include mixins.desktop {
             margin-right: 1rem;
@@ -30,16 +22,12 @@
     }
 
     &__textarea{
-        @include mixins.desktop {
-            height: 6rem;
-        }
         &--has-error {
             @include mixins.hasError
         }
     }
 
     &__input {
-        height: 2.5rem;
         &--has-error {
             @include mixins.hasError
         }

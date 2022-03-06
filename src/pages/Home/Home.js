@@ -26,8 +26,8 @@ class Home extends Component {
                     currentVideoIsLoaded: true,
                 })
             })
-            .catch(error => {
-                this.showNotification()
+            .catch(() => {
+                this.showNotification();
             })
     }
 
@@ -42,7 +42,7 @@ class Home extends Component {
                 videoId = videoId ? videoId : response.data[0].id;
                 this.getCurrentVideo(videoId);
             })
-            .catch(error => {
+            .catch(() => {
                 this.showNotification();
             })     
     } 
@@ -69,6 +69,7 @@ class Home extends Component {
     render() {
         const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError } = this.state;
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id);
+         
         return (
             <>
                 <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} isLoaded={currentVideoIsLoaded}/>

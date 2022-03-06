@@ -1,0 +1,17 @@
+@use '../../styles/partials/colors';
+
+.avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border-radius: 50%;
+
+    &__image {
+        margin: 0 auto;
+        height: 100%;
+
+        &--no-image {
+            background-color: colors.$secondary-mercury;
+        }
+    }
+}

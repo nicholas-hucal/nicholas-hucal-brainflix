@@ -22,23 +22,10 @@
         }
     }
 
-    &__avatar-container {
-        width: 2.5rem;
-        height: 2.5rem;
-        overflow: hidden;
-        border-radius: 50%;
+    &__avatar {
         margin-top: 1rem;
     }
-
-    &__avatar {
-        margin: 0 auto;
-        height: 100%;
-
-        &--no-image {
-            background-color: colors.$secondary-mercury;
-        }
-    }
-
+    
     &__form {
         display: flex;
         flex-direction: column;
@@ -62,32 +49,28 @@
         }
     }
 
+    &__label {
+        @include mixins.desktop {
+            flex: 2;
+            margin-right: 1rem;
+        }
+    }
+
     &__textarea {
         width: 100%;
-        box-sizing: border-box;
         height: 6rem;
-        border-radius: 0.25rem;
-        border: 1px solid colors.$secondary-mercury;
-        padding: 0.75rem;
         margin-bottom: 1rem;
-        resize: none;
 
         @include mixins.desktop {
             height: 2.5rem;
             flex: 2;
-            margin-right: 1rem;
-            overflow: hidden;
-            padding: 0.6rem;
-        }
-
-        &:focus  {
-            border: 2px solid colors.$primary-blue;
         }
     }
 
     &__submit {
         @include mixins.desktop {
             flex: 1;
+            margin-top: 1.25rem;
         }
     }
 }

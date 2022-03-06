@@ -1,10 +1,10 @@
-import './Video.scss'
+import './Video.scss';
 import { Link } from 'react-router-dom';
 
 function Video({ video, isLoaded }) {
     const { id, title, channel, image } = video;
-    return (
 
+    return (
         <Link to={`/${id || ''}`} className='video'>
             <div className={`video__image-container ${isLoaded ? '' : 'video__image-container--loading'}`}>
                 <img className={`video__image ${isLoaded ? '' : 'video__image--loading'}`} src={image} alt={title} />

@@ -1,5 +1,5 @@
-import React from 'react'
-import './Notification.scss'
+import React from 'react';
+import './Notification.scss';
 
 function Notification({title, message}) {
   return (
