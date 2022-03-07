@@ -21,6 +21,11 @@
         right: 0;
         top: 0;
         font-size: 0.75rem;
+        cursor: pointer;
+
+        @include mixins.desktop {
+            right: 1rem;
+        }
     }
 
     &__info {

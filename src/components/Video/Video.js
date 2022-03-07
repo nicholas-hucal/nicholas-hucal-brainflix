@@ -5,7 +5,7 @@ function Video({ video, isLoaded }) {
     const { id, title, channel, image } = video;
 
     return (
-        <Link to={`/${id || ''}`} className='video'>
+        <Link to={`/videos/${id || ''}`} className='video'>
             <div className={`video__image-container ${isLoaded ? '' : 'video__image-container--loading'}`}>
                 <img className={`video__image ${isLoaded ? '' : 'video__image--loading'}`} src={image} alt={title} />
             </div>
@@ -24,4 +24,4 @@ function Video({ video, isLoaded }) {
     )
 }
 
-export default Video
+export default Video;

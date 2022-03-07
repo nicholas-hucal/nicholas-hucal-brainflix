@@ -1,6 +1,6 @@
 import './Comment.scss';
 import { format } from 'timeago.js';
-import Avatar from '../Avatar/Avatar';
+import Avatar from '../Avatar/Avatar.js';
 
 function Comment({ individualComment, last, isLoaded, deleteComment, video }) {
     const { id, name, timestamp, comment, likes } = individualComment;

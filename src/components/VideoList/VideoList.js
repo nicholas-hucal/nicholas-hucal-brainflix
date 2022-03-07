@@ -1,5 +1,5 @@
 import './VideoList.scss';
-import Video from '../Video/Video';
+import Video from '../Video/Video.js';
 import { v4 as uuidv4 } from 'uuid';
 
 function VideoList({ videos, isLoaded }) {
@@ -11,7 +11,7 @@ function VideoList({ videos, isLoaded }) {
         return <Video
           video={video}
           key={uuidv4()}
-          isLoaded={isLoaded} 
+          isLoaded={isLoaded}
         />
       })}
     </section>

@@ -1,12 +1,12 @@
 import './Home.scss';
 import { Component } from 'react';
 import api from '../../utils/api.js';
-import VideoHero from '../../components/VideoHero/VideoHero';
-import VideoDetails from '../../components/VideoDetails/VideoDetails';
-import CommentForm from '../../components/CommentForm/CommentForm';
-import CommentList from '../../components/CommentList/CommentList';
-import VideoList from '../../components/VideoList/VideoList';
-import Notification from '../../components/Notification/Notification';
+import VideoHero from '../../components/VideoHero/VideoHero.js';
+import VideoDetails from '../../components/VideoDetails/VideoDetails.js';
+import CommentForm from '../../components/CommentForm/CommentForm.js';
+import CommentList from '../../components/CommentList/CommentList.js';
+import VideoList from '../../components/VideoList/VideoList.js';
+import Notification from '../../components/Notification/Notification.js';
 
 class Home extends Component {
     state = {
@@ -29,7 +29,7 @@ class Home extends Component {
                 })
             })
             .catch(() => {
-                this.toggleNotification();
+                this.props.history.push('/notfound');
             })
     }
 
@@ -54,11 +54,9 @@ class Home extends Component {
     } 
 
     deleteComment = (commentId, videoId) => {
-        console.log(commentId, videoId);
         api
             .deleteComment(commentId, videoId)
             .then(response => {
-                console.log(response)
                 this.getCurrentVideo(videoId);
             })
             .catch(error => {
@@ -74,8 +72,9 @@ class Home extends Component {
     componentDidUpdate(prevProps, prevState) {
         const currentId = this.props.match.params.id;
         const prevId = prevProps.match.params.id;
+        const homeId = this.state.videos[0].id;
         if ((prevId !== currentId)) {
-            this.getCurrentVideo(currentId || this.state.videos[0].id);
+            this.getCurrentVideo(currentId || homeId);
             window.scrollTo(0,0);
         }
     }
@@ -108,7 +107,13 @@ class Home extends Component {
                         <VideoList videos={filteredVideos} isLoaded={videosIsLoaded}/>
                     </aside>
                 </section>
-                { requestError && <Notification title='Network Error' message='There was an error with your request, please refresh the page and try again.' clickHandler={this.toggleNotification} /> }
+                { requestError && 
+                    <Notification
+                        title='Network Error'
+                        message='There was an error with your request, please refresh the page and try again.'
+                        clickHandler={this.toggleNotification} 
+                    /> 
+                }
             </>
         )
     }

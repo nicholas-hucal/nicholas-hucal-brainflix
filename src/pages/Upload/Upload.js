@@ -1,12 +1,12 @@
 import './Upload.scss';
 import { Component } from 'react';
-import { isFieldValid, isFormValid, emptyForm } from '../../utils/validation';
+import { isFieldValid, isFormValid, emptyForm } from '../../utils/validation.js';
 import fields from '../../utils/fields.js';
-import Button from '../../components/Button/Button';
-import Notification from '../../components/Notification/Notification';
+import Button from '../../components/Button/Button.js';
+import Inputs from '../../components/Inputs/Inputs.js';
+import Notification from '../../components/Notification/Notification.js';
 import publishImg from '../../assets/images/icons/publish.svg';
 import thumbImg from '../../assets/images/images/Upload-video-preview.jpg';
-import Inputs from '../../components/Inputs/Inputs';
 
 class Upload extends Component {
     state = {

@@ -1,11 +1,11 @@
 import './Nav.scss';
 import { Link } from 'react-router-dom';
+import Button from '../Button/Button.js';
+import Avatar from '../Avatar/Avatar.js';
 import logo from '../../assets/images/logo/BrainFlix-logo.svg';
 import buttonImg from '../../assets/images/icons/upload.svg';
 import searchImg from '../../assets/images/icons/search.svg';
 import avatarImg from '../../assets/images/images/Mohan-muruge.jpg';
-import Button from '../Button/Button';
-import Avatar from '../Avatar/Avatar';
 
 function Nav() {
     return (

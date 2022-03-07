@@ -1,5 +1,5 @@
 import './Button.scss';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function Button({ className, alt, text, type, image, clickHandler, href, disable}) {
     if (type !== 'link' && type !== 'cancel') {

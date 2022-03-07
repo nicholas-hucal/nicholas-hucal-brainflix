@@ -1,9 +1,9 @@
 import './App.scss';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'; 
-import Nav from './components/Nav/Nav';
-import Home from './pages/Home/Home';
-import Upload from './pages/Upload/Upload';
-import NotFound from './pages/NotFound/NotFound';
+import Nav from './components/Nav/Nav.js';
+import Home from './pages/Home/Home.js';
+import Upload from './pages/Upload/Upload.js';
+import NotFound from './pages/NotFound/NotFound.js';
 
 function App() {
   return (
@@ -11,9 +11,10 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Switch>
-          <Route path="/upload" component={Upload} />
           <Route path="/" exact component={Home} />
-          <Route path="/:id" exact component={Home} />
+          <Route path="/upload" component={Upload} />
+          <Route path="/videos/:id" component={Home} />
+          <Route path="/notfound" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

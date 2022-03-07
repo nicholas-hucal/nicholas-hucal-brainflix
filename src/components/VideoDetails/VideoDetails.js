@@ -1,7 +1,7 @@
 import './VideoDetails.scss';
+import { format } from 'timeago.js';
 import viewIcon from '../../assets/images/icons/views.svg';
 import likeIcon from '../../assets/images/icons/likes.svg';
-import { format } from 'timeago.js';
 
 function VideoDetails({ video, isLoaded }) {
     const { title, channel, timestamp, views, likes, description, comments } = video;
