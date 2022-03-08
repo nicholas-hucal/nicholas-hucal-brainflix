@@ -7,6 +7,7 @@ import CommentForm from '../../components/CommentForm/CommentForm.js';
 import CommentList from '../../components/CommentList/CommentList.js';
 import VideoList from '../../components/VideoList/VideoList.js';
 import Notification from '../../components/Notification/Notification.js';
+import NotFound from '../../components/NotFound/NotFound';
 
 class Home extends Component {
     state = {
@@ -16,6 +17,7 @@ class Home extends Component {
         videosIsLoaded: false,
         currentVideoIsLoaded: false,
         requestError: false,
+        missingError: false
     }
 
     getCurrentVideo = (videoId) => {
@@ -25,11 +27,14 @@ class Home extends Component {
                 this.setState({ 
                     currentVideo: response.data,
                     currentVideoIsLoaded: true,
-                    comments: response.data.comments.sort((a,b) => b.timestamp - a.timestamp)
+                    comments: response.data.comments.sort((a,b) => b.timestamp - a.timestamp),
+                    missingError: false
                 })
             })
             .catch(() => {
-                this.props.history.push('/notfound');
+                this.setState({
+                    missingError: true
+                })
             })
     }
 
@@ -85,8 +90,15 @@ class Home extends Component {
         });
     }
 
+    toggleError = () => {
+        this.setState({
+            missingError: !this.state.missingError
+        })
+        // this.props.history.push('/');
+    }
+
     render() {
-        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError, comments } = this.state;
+        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError, comments, missingError } = this.state;
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id);
          
         return (
@@ -94,14 +106,19 @@ class Home extends Component {
                 <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} isLoaded={currentVideoIsLoaded}/>
                 <section className='home'>
                     <main className='home__main'>
-                        <VideoDetails video={currentVideo} isLoaded={currentVideoIsLoaded}/>
-                        <CommentForm video={currentVideo} addComment={this.addComment}/>
-                        <CommentList 
-                            video={currentVideo}
-                            comments={comments}
-                            deleteComment={this.deleteComment}
-                            isLoaded={currentVideoIsLoaded}
-                        />
+                        { !missingError &&    
+                            <>
+                                <VideoDetails video={currentVideo} isLoaded={currentVideoIsLoaded}/>
+                                <CommentForm video={currentVideo} addComment={this.addComment}/>
+                                <CommentList 
+                                    video={currentVideo}
+                                    comments={comments}
+                                    deleteComment={this.deleteComment}
+                                    isLoaded={currentVideoIsLoaded}
+                                />
+                            </>
+                        }
+                        { missingError && <NotFound clickHandler={this.toggleError} /> }
                     </main>
                     <aside className='home__aside'>
                         <VideoList videos={filteredVideos} isLoaded={videosIsLoaded}/>

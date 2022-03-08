@@ -6,7 +6,7 @@ function Comment({ individualComment, last, isLoaded, deleteComment, video }) {
     const { id, name, timestamp, comment, likes } = individualComment;
     return (
         <article className={`comment ${last}`} data-likes={likes}>
-            <div className='comment__delete' onClick={() => deleteComment(id, video.id)}>x</div>
+            <div className={`comment__delete ${isLoaded ? '' : 'comment__delete--loading'}`} onClick={() => deleteComment(id, video.id)}>x</div>
             <Avatar image={null} imgClass="comment__avatar-image" parentClass="comment__avatar" />
             <section className='comment__info'>
                 <div className='comment__details'>

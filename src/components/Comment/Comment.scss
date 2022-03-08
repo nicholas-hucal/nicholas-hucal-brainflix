@@ -26,6 +26,10 @@
         @include mixins.desktop {
             right: 1rem;
         }
+
+        &--loading {
+            display: none;
+        }
     }
 
     &__info {

@@ -1,0 +1,19 @@
+@use '../../styles/partials/mixins';
+
+.fourOhFour {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    @include mixins.tablet {
+        max-width: 32rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @include mixins.desktop {
+        max-width: 48rem;
+        padding-left: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
