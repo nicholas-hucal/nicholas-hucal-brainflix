@@ -90,11 +90,10 @@ class Home extends Component {
         });
     }
 
-    toggleError = () => {
+    resetError = () => {
         this.setState({
-            missingError: !this.state.missingError
+            missingError: false
         })
-        // this.props.history.push('/');
     }
 
     render() {
@@ -118,7 +117,7 @@ class Home extends Component {
                                 />
                             </>
                         }
-                        { missingError && <NotFound clickHandler={this.toggleError} /> }
+                        { missingError && <NotFound clickHandler={this.resetError} /> }
                     </main>
                     <aside className='home__aside'>
                         <VideoList videos={filteredVideos} isLoaded={videosIsLoaded}/>

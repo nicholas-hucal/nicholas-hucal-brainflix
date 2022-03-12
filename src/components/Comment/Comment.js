@@ -3,11 +3,11 @@ import { format } from 'timeago.js';
 import Avatar from '../Avatar/Avatar.js';
 
 function Comment({ individualComment, last, isLoaded, deleteComment, video }) {
-    const { id, name, timestamp, comment, likes } = individualComment;
+    const { id, name, timestamp, comment, likes, avatar } = individualComment;
     return (
         <article className={`comment ${last}`} data-likes={likes}>
             <div className={`comment__delete ${isLoaded ? '' : 'comment__delete--loading'}`} onClick={() => deleteComment(id, video.id)}>x</div>
-            <Avatar image={null} imgClass="comment__avatar-image" parentClass="comment__avatar" />
+            <Avatar image={avatar} imgClass="comment__avatar-image" parentClass="comment__avatar" />
             <section className='comment__info'>
                 <div className='comment__details'>
                     <p className={`comment__name ${isLoaded ? '' : 'comment__name--loading'}`}>
