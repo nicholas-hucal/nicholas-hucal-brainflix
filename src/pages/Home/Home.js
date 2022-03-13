@@ -17,7 +17,9 @@ class Home extends Component {
         videosIsLoaded: false,
         currentVideoIsLoaded: false,
         requestError: false,
-        missingError: false
+        missingError: false,
+        liked: false,
+        played: false
     }
 
     getCurrentVideo = (videoId) => {
@@ -90,6 +92,36 @@ class Home extends Component {
         });
     }
 
+    updateViews = (videoId) => {
+        api.updateViews(videoId)
+            .then(response => {
+                this.setState({
+                    currentVideo: response.data,
+                    played: true
+                })
+            setTimeout(()=>{
+                this.setState({
+                    played: false
+                })
+            },200)
+        })
+    }
+
+    updateLikes = (videoId) => {
+        api.updateLikes(videoId)
+            .then(response => {
+                this.setState({
+                    currentVideo: response.data,
+                    liked: true
+                })
+                setTimeout(()=>{
+                    this.setState({
+                        liked: false
+                    })
+                },200)
+            })
+    }
+
     resetError = () => {
         this.setState({
             missingError: false
@@ -97,17 +129,23 @@ class Home extends Component {
     }
 
     render() {
-        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError, comments, missingError } = this.state;
+        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError, comments, missingError, liked, played } = this.state;
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id);
          
         return (
             <>
-                <VideoHero videoSrc={currentVideo.video} posterSrc={currentVideo.image} isLoaded={currentVideoIsLoaded}/>
+                <VideoHero 
+                    updateViews={this.updateViews}
+                    video={currentVideo}
+                    videoSrc={currentVideo.video}
+                    posterSrc={currentVideo.image}
+                    isLoaded={currentVideoIsLoaded}
+                />
                 <section className='home'>
                     <main className='home__main'>
                         { !missingError &&    
                             <>
-                                <VideoDetails video={currentVideo} isLoaded={currentVideoIsLoaded}/>
+                                <VideoDetails played={played} liked={liked} updateLikes={this.updateLikes} video={currentVideo} isLoaded={currentVideoIsLoaded}/>
                                 <CommentForm video={currentVideo} addComment={this.addComment}/>
                                 <CommentList 
                                     video={currentVideo}

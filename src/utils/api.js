@@ -12,5 +12,7 @@ export default {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-    })
+    }),
+    updateViews: (videoId) => axios.put(`${BASE_URL}/videos/${videoId}/views?api_key=${API_KEY}`),
+    updateLikes: (videoId) => axios.put(`${BASE_URL}/videos/${videoId}/likes?api_key=${API_KEY}`),
 }

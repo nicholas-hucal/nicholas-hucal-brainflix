@@ -6,7 +6,7 @@ import volume from '../../assets/images/icons/Icon-volume.svg';
 import scrubber from '../../assets/images/icons/Icon-scrubber-control.svg';
 import { Component } from 'react';
 
-const VideoControls = ({videoSrc, videoInfo, videoHandler, fullScreenHandler}) => {
+const VideoControls = ({videoSrc, videoInfo, videoHandler, fullScreenHandler, video}) => {
 
     const { videoLength, videoPosition, percent, isPlaying, videoRef } = videoInfo;
 
@@ -15,7 +15,7 @@ const VideoControls = ({videoSrc, videoInfo, videoHandler, fullScreenHandler}) =
 
     const videoCheck = (action) => {
         if (videoSrc !== '') {
-            videoHandler(videoRef, action)
+            videoHandler(videoRef, action, video.id)
         }
     }
 

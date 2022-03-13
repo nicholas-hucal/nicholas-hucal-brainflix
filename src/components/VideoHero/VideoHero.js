@@ -1,7 +1,6 @@
 import VideoControls from '../VideoControls/VideoControls';
-import { Component, useRef } from "react";
+import { Component } from "react";
 import './VideoHero.scss';
-import { render } from 'timeago.js';
 
 class VideoHero extends Component {
     
@@ -12,10 +11,11 @@ class VideoHero extends Component {
         percent: 0
     }
 
-    videoHandler = (videoRef, control) => {
+    videoHandler = (videoRef, control, videoId) => {
         let isPlaying = false;
         if (control === "play") {
             videoRef.play();
+            this.props.updateViews(videoId);
             isPlaying = true;
         } else {
             videoRef.pause();
@@ -48,20 +48,32 @@ class VideoHero extends Component {
     }
     
     render() {
-        const { posterSrc, videoSrc, videoType } = this.props;
+        const { posterSrc, videoSrc, videoType, video } = this.props;
         return (
             <section className='video-hero'>
                 <div className='video-hero__container'>
-                    <video className='video-hero__video' onEnded={(e) => this.videoHandler(e.target, 'stop')} onTimeUpdate={(e) => this.playerTimelineUpdate(e)} src={`${videoSrc}.mp4`} crossOrigin='anonymous' poster={posterSrc}>
+                    <video 
+                        className='video-hero__video'
+                        onEnded={(e) => this.videoHandler(e.target, 'stop')}
+                        onTimeUpdate={(e) => this.playerTimelineUpdate(e)} src={`${videoSrc}.mp4`}
+                        crossOrigin='anonymous'
+                        poster={posterSrc}
+                    >
                     {videoSrc !== '' &&
                         <>
-                        <source src={`${videoSrc}.mp4`} type='video/mp4' />
-                        <source src={`${videoSrc}.ogg`} type='video/ogg' />
-                        <source src={`${videoSrc}.webm`} type='video/webm' />
+                            <source src={`${videoSrc}.mp4`} type='video/mp4' />
+                            <source src={`${videoSrc}.ogg`} type='video/ogg' />
+                            <source src={`${videoSrc}.webm`} type='video/webm' />
                         </>
                     }
                     </video>
-                    <VideoControls videoSrc={videoSrc} videoInfo={this.state} videoHandler={this.videoHandler} fullScreenHandler={this.fullScreenHandler}/>
+                    <VideoControls 
+                        video={video} 
+                        videoSrc={videoSrc} 
+                        videoInfo={this.state} 
+                        videoHandler={this.videoHandler} 
+                        fullScreenHandler={this.fullScreenHandler}
+                    />
                 </div>
             </section>
         )

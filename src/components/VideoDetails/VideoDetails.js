@@ -3,8 +3,8 @@ import { format } from 'timeago.js';
 import viewIcon from '../../assets/images/icons/views.svg';
 import likeIcon from '../../assets/images/icons/likes.svg';
 
-function VideoDetails({ video, isLoaded }) {
-    const { title, channel, timestamp, views, likes, description, comments } = video;
+function VideoDetails({ video, isLoaded, updateLikes, liked, played }) {
+    const { id, title, channel, timestamp, views, likes, description, comments } = video;
   
     return (
         <section className='video-details'>
@@ -17,7 +17,7 @@ function VideoDetails({ video, isLoaded }) {
                 <div className='video-details__info-end'>
                     <p className='video-details__views'>
                         <img
-                            className='video-details__icon'
+                            className={`video-details__icon ${played && 'video-details__icon--active'}`}
                             src={viewIcon}
                             alt={`this videos views total is ${views}`}
                         />
@@ -25,9 +25,10 @@ function VideoDetails({ video, isLoaded }) {
                     </p>
                     <p className='video-details__likes'>
                         <img
-                            className='video-details__icon'
+                            className={`video-details__icon ${liked && 'video-details__icon--active'}`}
                             src={likeIcon}
                             alt={`this videos likes total is ${likes}`}
+                            onClick={(e) => updateLikes(id)}
                         />
                         {likes}
                     </p>
