@@ -102,7 +102,7 @@ class Home extends Component {
          
         return (
             <>
-                <VideoHero videoSrc="" videoType="" posterSrc={currentVideo.image} isLoaded={currentVideoIsLoaded}/>
+                <VideoHero videoSrc={currentVideo.video} posterSrc={currentVideo.image} isLoaded={currentVideoIsLoaded}/>
                 <section className='home'>
                     <main className='home__main'>
                         { !missingError &&    

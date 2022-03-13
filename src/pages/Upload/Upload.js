@@ -1,6 +1,7 @@
 import './Upload.scss';
 import { Component } from 'react';
 import { isFieldValid, isFormValid, emptyForm } from '../../utils/validation.js';
+import api from '../../utils/api.js';
 import fields from '../../utils/fields.js';
 import Button from '../../components/Button/Button.js';
 import Inputs from '../../components/Inputs/Inputs.js';
@@ -12,16 +13,21 @@ class Upload extends Component {
     state = {
         fields: fields.upload,
         isValid: 0,
-        submitted: 0
+        submitted: 0,
+        thumb: thumbImg
     }
 
     handleChange = (event, field) => {
         const fields = isFieldValid(event, field, [...this.state.fields]);
-        const sum = isFormValid(fields);
-        this.setState({
+        const sum = isFormValid(fields);        
+        const data = {
             isValid: Number(sum) === fields.length ? 1 : 0,
             fields: fields
-        })
+        }
+        if (event.target.files && event.target.files[0]) {
+            data.thumb = URL.createObjectURL(event.target.files[0]);
+        }
+        this.setState(data)
     }
 
     handleSubmit = (event) => {
@@ -31,10 +37,21 @@ class Upload extends Component {
             fields: emptyForm([...this.state.fields])
         });
         
-        setTimeout(() => {
-            this.props.history.push('/');
-            window.scrollTo(0,0);
-        }, 5000);
+        const data = new FormData() ;
+        data.append('title', event.target.title.value);
+        data.append('description', event.target.description.value);
+        data.append('image', event.target.poster.files[0]);
+
+        api.addVideo(data)
+            .then(response => {
+                setTimeout(() => {
+                    this.props.history.push('/');
+                    window.scrollTo(0,0);
+                }, 5000);
+            })
+            .catch(error => {
+
+            })
     }
 
     render() {
@@ -44,12 +61,12 @@ class Upload extends Component {
             <main className='video-upload'>
                 <div className='video-upload__container'>
                     <h1 className='video-upload__heading'>Upload Video</h1>
-                    <form className='video-upload__form' onSubmit={this.handleSubmit}>
+                    <form className='video-upload__form' onSubmit={this.handleSubmit} encType='multipart/form-data'>
                         <section className='video-upload__form-inputs'>
                             <div className='video-upload__form-start'>
                                 <label className='video-upload__label'>
                                     Video Thumbnail
-                                    <img className='video-upload__thumbnail' src={thumbImg} alt="video to upload" />
+                                    <img className='video-upload__thumbnail' src={this.state.thumb} alt="video to upload" />
                                 </label>
                             </div>
                             <div className='video-upload__form-end'>

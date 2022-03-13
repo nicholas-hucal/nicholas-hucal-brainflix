@@ -20,6 +20,23 @@ export default {
             valid: 0
         },
         {
+            name: 'poster',
+            label: 'Poster Image',
+            type: 'file',
+            class: 'video-upload__input',
+            parentClass: 'video-upload__label',
+            validation: {
+                type: 'length',
+                check: 1,
+                errorMessage: 'You must enter a file'
+            },
+            placeholder: 'Add an image to your post',
+            error: 1,
+            text: '',
+            id: uuidv4(),
+            valid: 0
+        },
+        {
             name: 'description',
             label: 'Add a video description',
             type: 'textarea',

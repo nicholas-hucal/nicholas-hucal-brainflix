@@ -15,6 +15,17 @@ function Inputs({field, handleChange}) {
                     value={field.text}
                 />
             }
+            {field.type === 'file' && 
+                <input
+                    className={`input__file ${!field.error ? '' : 'input__file--has-error'} ${field.class}`}
+                    type={field.type}
+                    name={field.name}
+                    onChange={(event) => handleChange(event, field)}
+                    placeholder={field.placeholder}
+                    value={field.text}
+                    accept="image/png, image/jpeg"
+                />
+            }
             {field.type === 'textarea' && 
                 <textarea
                     className={`input__textarea ${!field.error ? '' : 'input__textarea--has-error'} ${field.class}`}
