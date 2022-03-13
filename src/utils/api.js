@@ -15,4 +15,5 @@ export default {
     }),
     updateViews: (videoId) => axios.put(`${BASE_URL}/videos/${videoId}/views?api_key=${API_KEY}`),
     updateLikes: (videoId) => axios.put(`${BASE_URL}/videos/${videoId}/likes?api_key=${API_KEY}`),
+    search: (search) => axios.post(`${BASE_URL}/videos/search?api_key=${API_KEY}`, search),
 }

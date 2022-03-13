@@ -37,7 +37,7 @@ class Upload extends Component {
             fields: emptyForm([...this.state.fields])
         });
         
-        const data = new FormData() ;
+        const data = new FormData();
         data.append('title', event.target.title.value);
         data.append('description', event.target.description.value);
         data.append('image', event.target.poster.files[0]);
