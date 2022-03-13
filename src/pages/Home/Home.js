@@ -19,7 +19,7 @@ class Home extends Component {
         requestError: false,
         missingError: false,
         liked: false,
-        played: false
+        played: false,
     }
 
     getCurrentVideo = (videoId) => {
@@ -129,7 +129,18 @@ class Home extends Component {
     }
 
     render() {
-        const { videos, currentVideo, videosIsLoaded, currentVideoIsLoaded, requestError, comments, missingError, liked, played } = this.state;
+        const { 
+            videos,
+            currentVideo,
+            videosIsLoaded,
+            currentVideoIsLoaded,
+            requestError,
+            comments,
+            missingError,
+            liked,
+            played,
+        } = this.state;
+        
         const filteredVideos = videos.filter(video => video.id !== currentVideo.id);
          
         return (
@@ -145,7 +156,13 @@ class Home extends Component {
                     <main className='home__main'>
                         { !missingError &&    
                             <>
-                                <VideoDetails played={played} liked={liked} updateLikes={this.updateLikes} video={currentVideo} isLoaded={currentVideoIsLoaded}/>
+                                <VideoDetails
+                                    played={played}
+                                    liked={liked}
+                                    updateLikes={this.updateLikes}
+                                    video={currentVideo}
+                                    isLoaded={currentVideoIsLoaded}
+                                />
                                 <CommentForm video={currentVideo} addComment={this.addComment}/>
                                 <CommentList 
                                     video={currentVideo}

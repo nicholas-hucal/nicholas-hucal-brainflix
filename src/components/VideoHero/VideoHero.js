@@ -8,7 +8,9 @@ class VideoHero extends Component {
         isPlaying: false,
         videoLength: '0:00',
         videoPosition: '0:00',
-        percent: 0
+        videoPercent: 0,
+        showVolume: false,
+        volumeLevel: 80
     }
 
     videoHandler = (videoRef, control, videoId) => {
@@ -38,12 +40,35 @@ class VideoHero extends Component {
         
         const duration = Math.floor(targetDuration / 60 || 0) + ":" + ("0" + Math.floor(targetDuration % 60 || 0)).slice(-2);
         const position = Math.floor(videoRef.currentTime / 60) + ":" + ("0" + Math.floor(videoRef.currentTime % 60)).slice(-2);
-        const percent = Math.ceil(videoRef.currentTime / targetDuration * 100);
+        let videoPercent = Math.ceil(videoRef.currentTime / targetDuration * 100);
+        videoPercent = Math.floor(videoPercent / 10) * 10
         this.setState({
             videoRef: e.target,
             videoLength: duration,
             videoPosition: position,
-            percent: percent
+            videoPercent: videoPercent
+        })
+    }
+
+    volumeHandler = () => {
+        this.setState({
+            showVolume: !this.state.showVolume
+        })
+    }
+
+    setVolumeHandler = (level) => {
+        this.setState({
+            volumeLevel: level
+        })
+    }
+
+    setTimeline = (percent) => {
+        console.log(this.state.videoLength);
+        const position = Math.floor(percent / 60) + ":" + ("0" + Math.floor(percent % 60)).slice(-2);
+
+        this.setState({
+            videoPosition: position,
+            videoPercent: percent
         })
     }
     
@@ -73,6 +98,9 @@ class VideoHero extends Component {
                         videoInfo={this.state} 
                         videoHandler={this.videoHandler} 
                         fullScreenHandler={this.fullScreenHandler}
+                        volumeHandler={this.volumeHandler}
+                        setVolumeHandler={this.setVolumeHandler}
+                        setTimeline={this.setTimeline}
                     />
                 </div>
             </section>
