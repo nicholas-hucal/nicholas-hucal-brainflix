@@ -1,48 +1,43 @@
-# BrainFlix - A Responsive App Prototype 
+# BrainFlix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-- Sass CSS pre-processor module installed
+## Description
 
-## Sprint 1
+BrainFlix is a React Application. Scaffolded using create-react-app. The app makes API requests to an NODE.JS and Express server for dynamic data. All modern HTML/CSS/SCSS used throughout site. Custom react components are used to create the UI and react router dom is used for navigation. Animations are provided by CSS properties.
 
-In Sprint 1 we start by creating the layout of the site. Then we add functionality to hold the list of available videos in state for display and manipulation via site components. Currently local data is used for display purposes and no upload or comment submission capability is included. Dates are formatted through a utils file to provide both human readable and if not dd/mm/yyyy format for easy viewing.
+Tech Used: 
 
-### Layout
-- Nav Component
-    - Logo(with anchor link to homepage)
-    - A search form (not functional yet)
-    - An upload button (not functional yet)
-        - A Button Component
-    - And a user avatar
-- VideoHero Component
-    - holding the current video in a video player that spans the width of the container
-    - a default picture/poster is displayed in lieu of video
-    - black background behind to cover an area not in the 16/9 ratio video area
-- VideoDetails Component
-    - Holds the details of the currently selected video
-    - Title, Channel, Date, Likes and Views Counts
-    - A description of the video follows
-- CommentForm Component
-    - Holds the current count of comments
-    - The current user avatar
-    - and the form to submit new comments (not functional yet)
-        - Uses a Button Component
-- CommentList Component
-    - Holds the list of current comments for the current video
-        - Uses the Comment Component to display comment
-- VideoList Component
-    - Holds the list of other videos available for viewing. On click updates the UI without page refresh to display selected video and details
-        - Uses the Video Component to display a video
+- React
+- Heroku
+- Axios
+- HTML
+- CSS/SCSS
 
-### Functionality
-- State
-    - Videos holds a list of current videos with few details
-    - CurrentVideo holds the complete details of the currently selected video
-- Utils
-    - formatDateforSite provides a dd/mm/yyyy formated string date for the site
-    - createHumanReadableDate provides a human readable date in '1 day ago', '2 months ago' etc.
-- The buttons on site are current set to `e.preventDefault()` so as not to provide any current function
-- Nav logo anchors to root
-- Clicking a video in the videolist updates the UI with that videos details and updates the videolist with available options, while excluding the selected video from the list.
-- Responsive, the site has 2 breakpoints past mobile to allow for seamless viewing on any device.
+Find server code @ [my repo on github](https://github.com/nicholas-hucal/nicholas-hucal-brainflix-api)
 
+## Installation
+
+To install this project simply clone/download the repo and install to a folder on your local machine. Run ```npm install``` to install node modules.
+
+## Usage
+
+Open the .env.example file and set your ports according to preference, and rename to .env, in order to use this site navigate to working folder in terminal and run ```npm start```
+
+## Roadmap
+
+There is no plans for further development.
+
+## Contributing
+
+Not open to contributions at this time.
+
+## Authors and acknowledgment
+
+N/A
+
+## License
+
+This project is open source and may be used only for personal learning and training. No commercial rights given.
+
+## Project status
+
+This project is complete as it was a project to teach the fundamentals of React and Express in my diploma program @ BrainStation
